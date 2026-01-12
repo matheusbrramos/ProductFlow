@@ -1,0 +1,31 @@
+# Contexto específico do projeto (cada usuário cria o seu)
+.context/
+
+# Documentos gerados (específicos de cada projeto)
+docs/
+
+# Snapshots e memória local
+.productflow/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node (se usado)
+node_modules/
+
+# Python (se usado)
+__pycache__/
+*.pyc
+.env
