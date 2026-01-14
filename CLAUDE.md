@@ -53,12 +53,13 @@ Após cada ciclo de trabalho:
 
 | Agente | Responsabilidade | Comando |
 |--------|------------------|---------|
-| **Helper** | Coleta contexto da empresa e configura ambiente | `@helper` |
-| **Discovery** | Entrevistas, OST, JTBD, insights de usuário | `@discovery` |
-| **Researcher** | Pesquisa de mercado, concorrentes, sizing | `@researcher` |
-| **Strategist** | PRD, user stories, priorização | `@strategist` |
-| **Sales-Enabler** | Materiais de vendas e go-to-market | `@sales-enabler` |
-| **Supervisor** | Revisão de qualidade e consistência | `@supervisor` |
+| **Helper** | Coleta contexto da empresa e configura ambiente | `/helper` |
+| **Researcher** | Pesquisa de mercado, concorrentes, sizing | `/researcher` |
+| **Discovery** | Entrevistas, OST, JTBD, insights de usuário | `/discovery` |
+| **Strategist** | PRD, épicos, requisitos, priorização | `/strategist` |
+| **Story-Writer** | User stories detalhadas e acceptance criteria | `/story-writer` |
+| **Sales-Enabler** | Materiais de vendas e go-to-market | `/sales-enabler` |
+| **Supervisor** | Revisão de qualidade e consistência | `/supervisor` |
 
 Cada agente pode ser chamado **separadamente** conforme necessidade.
 
@@ -70,39 +71,52 @@ Cada agente pode ser chamado **separadamente** conforme necessidade.
 ┌─────────────────────────────────────────────────────────┐
 │                    PREPARAÇÃO                           │
 ├─────────────────────────────────────────────────────────┤
-│  @helper → Coleta contexto da empresa                   │
-│           Cria: .context/empresa.md                     │
+│  /helper → Coleta contexto da empresa                   │
+│            Cria: .context/empresa.md                    │
 └─────────────────────────────────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────┐
-│                    DESCOBERTA                           │
+│                 PESQUISA DE MERCADO                     │
 ├─────────────────────────────────────────────────────────┤
-│  @discovery → Entrevistas, OST, JTBD                    │
-│               Cria: docs/discovery/                     │
-│                                                         │
-│  @researcher → Mercado, concorrentes (paralelo)         │
+│  /researcher → Mercado, concorrentes, sizing            │
 │                Cria: .context/competidores-{projeto}.md │
 │                       docs/research/                    │
 └─────────────────────────────────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────┐
+│                    DESCOBERTA                           │
+├─────────────────────────────────────────────────────────┤
+│  /discovery → Entrevistas, OST, JTBD                    │
+│               (com contexto de mercado do /researcher)  │
+│               Cria: docs/discovery/                     │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
 │                   ESTRATÉGIA                            │
 ├─────────────────────────────────────────────────────────┤
-│  @strategist → PRD, user stories, priorização           │
+│  /strategist → PRD, épicos, requisitos, priorização     │
 │                Cria: docs/planning/                     │
+└─────────────────────────────────────────────────────────┘
+                          ↓
+┌─────────────────────────────────────────────────────────┐
+│                  DETALHAMENTO                           │
+├─────────────────────────────────────────────────────────┤
+│  /story-writer → User stories, acceptance criteria      │
+│                  (pergunta qual modelo LLM usar)        │
+│                  Cria: docs/planning/stories/           │
 └─────────────────────────────────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────┐
 │                  GO-TO-MARKET                           │
 ├─────────────────────────────────────────────────────────┤
-│  @sales-enabler → Materiais de vendas, pitch            │
+│  /sales-enabler → Materiais de vendas, pitch            │
 │                   Cria: docs/sales/                     │
 └─────────────────────────────────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────┐
 │                    QUALIDADE                            │
 ├─────────────────────────────────────────────────────────┤
-│  @supervisor → Revisão, consistência, melhorias         │
+│  /supervisor → Revisão, consistência, melhorias         │
 │                Cria: docs/reviews/                      │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -135,7 +149,7 @@ docs/
 
 ### .context/empresa.md
 
-Criado pelo @helper, contém:
+Criado pelo /helper, contém:
 - Missão, visão e valores da empresa
 - Modelo de negócio
 - Público-alvo atual
@@ -146,7 +160,7 @@ Criado pelo @helper, contém:
 
 ### .context/competidores-{projeto}.md
 
-Criado pelo @researcher, contém:
+Criado pelo /researcher, contém:
 - Visão geral do mercado
 - Ranking de concorrentes
 - Análise detalhada de cada player
@@ -162,7 +176,7 @@ Criado pelo @researcher, contém:
 ### Ao Iniciar Qualquer Trabalho
 
 1. Verificar se `.context/empresa.md` existe
-2. Se não existir, orientar PM a rodar `@helper` primeiro
+2. Se não existir, orientar PM a rodar `/helper` primeiro
 3. Carregar contexto relevante
 4. Confirmar entendimento do objetivo com PM
 
@@ -213,4 +227,15 @@ Product Managers que:
 
 ---
 
-*ProductFlow v1.0 - Seu parceiro sênior para Product Management*
+## Inicialização Rápida
+
+Para sessões mais eficientes em tokens, consulte:
+- **INIT.md**: `.claude/commands/INIT.md` - Índice compacto (~500 tokens)
+- **Briefings**: `.claude/commands/briefings/` - Resumos por agente (~100 tokens cada)
+
+Os briefings fornecem contexto suficiente para a maioria das tarefas.
+A documentação completa dos agentes está em `.claude/commands/agents/`.
+
+---
+
+*ProductFlow v2.0 - Seu parceiro sênior para Product Management*

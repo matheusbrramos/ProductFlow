@@ -1,6 +1,6 @@
 # /setup - Iniciar Contexto do Projeto
 
-Inicia a coleta de contexto da empresa com o @helper.
+Inicia a coleta de contexto da empresa com o /helper.
 
 ## Uso
 
@@ -18,7 +18,7 @@ Inicia a coleta de contexto da empresa com o @helper.
 
 ## O que acontece
 
-1. @helper pesquisa automaticamente informações públicas
+1. /helper pesquisa automaticamente informações públicas
 2. Apresenta o que encontrou
 3. Faz perguntas sobre o que não é público
 4. Cria `.context/empresa.md`

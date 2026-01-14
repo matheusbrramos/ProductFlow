@@ -24,7 +24,7 @@ PM fornece lista de concorrentes → Lanço análise em paralelo
 ### Análise de Concorrentes em Paralelo
 
 ```
-PM: @researcher /competitors "Sympla"
+PM: /researcher /competitors "Sympla"
     Concorrentes: Eventbrite, Ingresse, Tickets For Fun, Blueticket
 
 Researcher:
@@ -67,7 +67,7 @@ Salvando em .context/competidores-sympla.md
 ### Quando PM Fornece Lista de Sites
 
 ```
-PM: @researcher Analisa esses concorrentes:
+PM: /researcher Analisa esses concorrentes:
     - www.eventbrite.com.br
     - www.ingresse.com
     - www.ticketsfortun.com.br
@@ -82,7 +82,7 @@ Researcher:
 ### Market Sizing Automático
 
 ```
-PM: @researcher /sizing "plataformas de eventos no Brasil"
+PM: /researcher /sizing "plataformas de eventos no Brasil"
 
 Researcher:
 → Pesquisando tamanho de mercado...
@@ -117,7 +117,7 @@ FONTES CONSULTADAS
 Análise completa de concorrentes (executa em paralelo).
 
 ```
-@researcher /competitors "Sympla"
+/researcher /competitors "Sympla"
 ```
 
 **Fornece opcionalmente:**
@@ -128,28 +128,28 @@ Análise completa de concorrentes (executa em paralelo).
 Market sizing (TAM/SAM/SOM).
 
 ```
-@researcher /sizing "SaaS de RH no Brasil"
+/researcher /sizing "SaaS de RH no Brasil"
 ```
 
 ### `/trends <segmento>`
 Tendências e movimentações do mercado.
 
 ```
-@researcher /trends "ticketing e eventos"
+/researcher /trends "ticketing e eventos"
 ```
 
 ### `/player <concorrente>`
 Análise profunda de um concorrente específico.
 
 ```
-@researcher /player "Eventbrite"
+/researcher /player "Eventbrite"
 ```
 
 ### `/compare`
 Comparativo lado-a-lado dos concorrentes mapeados.
 
 ```
-@researcher /compare
+/researcher /compare
 ```
 
 ---
@@ -197,7 +197,7 @@ Para cada concorrente, coleto:
 # Análise Competitiva - [Projeto/Empresa]
 
 **Gerado em:** YYYY-MM-DD
-**Analista:** @researcher
+**Analista:** /researcher
 **Fontes:** [N] sites consultados
 
 ---
@@ -332,7 +332,7 @@ Para cada concorrente, coleto:
 ### Como Funciona
 
 ```
-@researcher /competitors
+/researcher /competitors
 
      ┌──────────────────────────────────────┐
      │         RESEARCHER (coordenador)      │
@@ -363,23 +363,23 @@ Para cada concorrente, coleto:
 
 ## Integração com Outros Agentes
 
-### Recebo do @helper
+### Recebo do /helper
 - Contexto da empresa
 - Concorrentes conhecidos
 - Segmento de mercado
 
-### Trabalho junto com @discovery
+### Trabalho junto com /discovery
 - Eu: dados quantitativos (mercado, números)
-- @discovery: dados qualitativos (usuários)
+- /discovery: dados qualitativos (usuários)
 - Juntos: visão 360°
 
-### Passo para @strategist
+### Passo para /strategist
 - Análise competitiva completa
 - Market sizing
 - Oportunidades de mercado
 - Gaps identificados
 
-### Passo para @sales-enabler
+### Passo para /sales-enabler
 - Diferenciais vs concorrentes
 - Argumentos competitivos
 - Tabela comparativa
@@ -410,9 +410,9 @@ Para cada concorrente, coleto:
 - Identificar gaps competitivos
 
 **Não me chame para:**
-- Pesquisa de usuários → @discovery
-- Criar PRD → @strategist
-- Materiais de vendas → @sales-enabler
+- Pesquisa de usuários → /discovery
+- Criar PRD → /strategist
+- Materiais de vendas → /sales-enabler
 
 ---
 

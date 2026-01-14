@@ -23,7 +23,7 @@ PM fornece o mínimo → Eu pesquiso e descubro o resto
 ### Quando PM Fornece um Site
 
 ```
-PM: @helper /setup www.acme.com.br
+PM: /helper /setup www.acme.com.br
 
 Helper:
 → Abrindo site da empresa...
@@ -67,7 +67,7 @@ Preciso que você complemente:
 ### Quando PM Fornece Nome da Empresa
 
 ```
-PM: @helper /setup "Nubank"
+PM: /helper /setup "Nubank"
 
 Helper:
 → Pesquisando informações públicas sobre Nubank...
@@ -89,8 +89,8 @@ O que preciso saber é específico do seu contexto interno:
 Inicia coleta proativa de contexto.
 
 ```
-@helper /setup www.empresa.com.br
-@helper /setup "Nome da Empresa"
+/helper /setup www.empresa.com.br
+/helper /setup "Nome da Empresa"
 ```
 
 **O que eu faço automaticamente:**
@@ -105,21 +105,21 @@ Inicia coleta proativa de contexto.
 Atualiza contexto existente.
 
 ```
-@helper /update
+/helper /update
 ```
 
 ### `/check`
 Verifica completude do contexto.
 
 ```
-@helper /check
+/helper /check
 ```
 
 ### `/projeto <nome>`
 Configura projeto específico (empresa já tem contexto).
 
 ```
-@helper /projeto "Novo App Mobile"
+/helper /projeto "Novo App Mobile"
 ```
 
 ---
@@ -164,7 +164,7 @@ Só faço perguntas sobre o que **não é público**:
 # Contexto: [Nome da Empresa]
 
 **Atualizado em:** YYYY-MM-DD
-**Coletado por:** @helper
+**Coletado por:** /helper
 **Fontes:** [lista de URLs consultadas]
 
 ---
@@ -248,7 +248,7 @@ Só faço perguntas sobre o que **não é público**:
 ## Exemplo de Sessão Completa
 
 ```
-PM: @helper /setup www.sympla.com.br
+PM: /helper /setup www.sympla.com.br
 
 Helper: Pesquisando informações sobre Sympla...
 
@@ -316,9 +316,9 @@ RESUMO DO PROJETO
 • Stakeholders: Head Produto, Growth, CS
 
 PRÓXIMOS PASSOS RECOMENDADOS
-→ @discovery - Entrevistar organizadores que fizeram só 1 evento
+→ /discovery - Entrevistar organizadores que fizeram só 1 evento
               e entender por que não voltaram
-→ @researcher - Mapear como concorrentes tratam retenção de sellers
+→ /researcher - Mapear como concorrentes tratam retenção de sellers
 
 Qual prefere começar?
 ```
@@ -331,11 +331,11 @@ Após criar contexto, habilito todos os outros agentes com informações ricas:
 
 | Agente | O que recebe do contexto |
 |--------|-------------------------|
-| @discovery | Perfil de usuários, produto, mercado |
-| @researcher | Concorrentes identificados, segmento, posicionamento |
-| @strategist | Metas, restrições, stakeholders |
-| @sales-enabler | Diferenciais, features, posicionamento |
-| @supervisor | Critérios de sucesso, escopo |
+| /discovery | Perfil de usuários, produto, mercado |
+| /researcher | Concorrentes identificados, segmento, posicionamento |
+| /strategist | Metas, restrições, stakeholders |
+| /sales-enabler | Diferenciais, features, posicionamento |
+| /supervisor | Critérios de sucesso, escopo |
 
 ---
 

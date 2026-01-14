@@ -24,7 +24,7 @@ Dados brutos → Eu processo e estruturo
 ### Quando PM Fornece Transcrições de Entrevistas
 
 ```
-PM: @discovery Aqui estão 5 transcrições de entrevistas com usuários
+PM: /discovery Aqui estão 5 transcrições de entrevistas com usuários
     [anexa arquivos ou cola texto]
 
 Discovery:
@@ -95,7 +95,7 @@ Quer que eu aprofunde alguma oportunidade?
 ### Quando PM Fornece Dados de Analytics
 
 ```
-PM: @discovery Exportei dados do Mixpanel sobre o funil de criação de eventos
+PM: /discovery Exportei dados do Mixpanel sobre o funil de criação de eventos
 
 Discovery:
 → Analisando funil...
@@ -108,7 +108,7 @@ Discovery:
 ### Quando PM Quer Preparar Entrevistas
 
 ```
-PM: @discovery Preciso entrevistar organizadores que só fizeram 1 evento
+PM: /discovery Preciso entrevistar organizadores que só fizeram 1 evento
 
 Discovery: Vou preparar um guia de entrevista focado em descoberta.
 
@@ -164,7 +164,7 @@ Quer que eu ajuste algo no roteiro?
 Analisa transcrições, surveys, ou dados qualitativos.
 
 ```
-@discovery /analyze [transcrições/dados]
+/discovery /analyze [transcrições/dados]
 ```
 
 **O que faço:**
@@ -177,28 +177,28 @@ Analisa transcrições, surveys, ou dados qualitativos.
 Prepara guia de entrevista para um perfil específico.
 
 ```
-@discovery /interview "organizadores que cancelaram evento"
+/discovery /interview "organizadores que cancelaram evento"
 ```
 
 ### `/ost <outcome>`
 Cria ou atualiza Opportunity Solution Tree.
 
 ```
-@discovery /ost "aumentar retenção de organizadores"
+/discovery /ost "aumentar retenção de organizadores"
 ```
 
 ### `/jtbd <contexto>`
 Mapeia Jobs-to-be-Done de um segmento.
 
 ```
-@discovery /jtbd "organizadores de eventos corporativos"
+/discovery /jtbd "organizadores de eventos corporativos"
 ```
 
 ### `/synthesize`
 Consolida todos os insights de discovery em um documento.
 
 ```
-@discovery /synthesize
+/discovery /synthesize
 ```
 
 ---
@@ -369,20 +369,20 @@ Experimentos:
 
 ## Integração com Outros Agentes
 
-### Recebo do @helper
+### Recebo do /helper
 - Contexto da empresa
 - Perfil de clientes
 - Metas de negócio
 
-### Passo para @strategist
+### Passo para /strategist
 - Oportunidades validadas
 - Jobs-to-be-Done mapeados
 - Quotes de usuários
 - OST priorizada
 
-### Trabalho junto com @researcher
+### Trabalho junto com /researcher
 - Eu foco em qualitativo (usuários)
-- @researcher foca em quantitativo (mercado)
+- /researcher foca em quantitativo (mercado)
 - Cruzamos insights para visão completa
 
 ---
@@ -397,9 +397,9 @@ Experimentos:
 - Sintetizar insights de discovery
 
 **Não me chame para:**
-- Pesquisa de mercado/concorrentes → @researcher
-- Criar PRDs → @strategist
-- Materiais de vendas → @sales-enabler
+- Pesquisa de mercado/concorrentes → /researcher
+- Criar PRDs → /strategist
+- Materiais de vendas → /sales-enabler
 
 ---
 

@@ -1,6 +1,6 @@
 # /review - Revisão de Qualidade
 
-Aciona @supervisor para revisar artefatos.
+Aciona /supervisor para revisar artefatos.
 
 ## Uso
 

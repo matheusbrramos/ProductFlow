@@ -1,6 +1,6 @@
 # /sales - Materiais de Vendas
 
-Aciona @sales-enabler para criar materiais comerciais.
+Aciona /sales-enabler para criar materiais comerciais.
 
 ## Uso
 

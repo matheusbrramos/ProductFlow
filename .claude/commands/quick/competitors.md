@@ -1,6 +1,6 @@
 # /competitors - Análise de Concorrentes
 
-Inicia análise competitiva com @researcher (execução em paralelo).
+Inicia análise competitiva com /researcher (execução em paralelo).
 
 ## Uso
 
@@ -18,13 +18,13 @@ Inicia análise competitiva com @researcher (execução em paralelo).
 
 ## O que acontece
 
-1. @researcher identifica concorrentes (se não fornecidos)
+1. /researcher identifica concorrentes (se não fornecidos)
 2. Lança sub-agentes em paralelo (1 por concorrente)
 3. Cada sub-agente pesquisa: site, reviews, notícias, LinkedIn
 4. Consolida em análise unificada
 5. Cria `.context/competidores-{projeto}.md`
 
-## Outros comandos do @researcher
+## Outros comandos do /researcher
 
 ### Market sizing
 ```

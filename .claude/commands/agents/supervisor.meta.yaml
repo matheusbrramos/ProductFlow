@@ -17,7 +17,7 @@ identity:
 
 triggers:
   mentions:
-    - "@supervisor"
+    - "/supervisor"
   keywords:
     - "revisar"
     - "review"
@@ -57,13 +57,14 @@ responsibilities:
       format: "markdown"
 
 workflow:
-  position: 4
+  position: 5
   phase: "quality"
   receives_from:
     - "helper"
-    - "discovery"
     - "researcher"
+    - "discovery"
     - "strategist"
+    - "story-writer"
     - "sales-enabler"
   delivers_to:
     - "PM (recomendação)"

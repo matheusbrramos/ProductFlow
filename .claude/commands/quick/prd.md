@@ -1,6 +1,6 @@
 # /prd - Criar Product Requirements Document
 
-Cria PRD completo com @strategist.
+Cria PRD completo com /strategist.
 
 ## Uso
 
@@ -28,7 +28,7 @@ PRD completo incluindo:
 - Métricas de sucesso
 - Riscos e dependências
 
-## Outros comandos do @strategist
+## Outros comandos do /strategist
 
 ### Quick Spec (features simples)
 ```

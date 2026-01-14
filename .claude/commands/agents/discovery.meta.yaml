@@ -18,7 +18,7 @@ identity:
 
 triggers:
   mentions:
-    - "@discovery"
+    - "/discovery"
   keywords:
     - "entrevista"
     - "usuário"
@@ -64,23 +64,24 @@ responsibilities:
       action: "Sugerir guia de entrevista"
 
 workflow:
-  position: 1
+  position: 2
   phase: "discovery"
   depends_on:
     - "helper"
+    - "researcher"
   next_agents:
     - "strategist"
-  parallel_with:
-    - "researcher"
+  parallel_with: []
 
   typical_flow:
+    - "Recebe contexto de mercado de /researcher"
     - "Recebe dados brutos (transcrições, surveys, etc)"
     - "Processa e analisa automaticamente"
     - "Extrai quotes e padrões"
     - "Mapeia JTBD e oportunidades"
     - "Constrói/atualiza OST"
     - "PM valida e prioriza"
-    - "Passa para @strategist"
+    - "Passa para /strategist"
 
 frameworks:
   opportunity_solution_trees:
@@ -145,9 +146,9 @@ constraints:
   context_file: ".context/empresa.md"
 
   should_not_do:
-    - "Pesquisa de mercado/concorrentes (usar @researcher)"
-    - "Criar PRDs (usar @strategist)"
-    - "Definir soluções técnicas (usar @strategist → @architect)"
+    - "Pesquisa de mercado/concorrentes (usar /researcher)"
+    - "Criar PRDs (usar /strategist)"
+    - "Definir soluções técnicas (usar /strategist → /architect)"
 
 tags:
   - "discovery"

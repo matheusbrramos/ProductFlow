@@ -78,7 +78,7 @@ Cria Product Requirements Document completo.
 Cria Quick Spec para features simples.
 
 ### `/stories <prd>`
-Quebra PRD em user stories acionáveis.
+**Nota**: Para user stories detalhadas, use `/story-writer`. Este comando cria apenas épicos de alto nível.
 
 ### `/prioritize <lista>`
 Prioriza features usando framework RICE.
@@ -314,42 +314,30 @@ Gera lista detalhada de requisitos funcionais e não-funcionais.
 - [Restrição de prazo/budget/técnica/regulatória]
 ```
 
-### 6. User Stories
+### 6. Épicos (Alto Nível)
 
 ```markdown
-## 6. User Stories
+## 6. Épicos
 
-### Epic: [Nome do Epic]
+### Lista de Épicos
 
-#### US-001: [Título]
-**Como** [persona específica]
-**Quero** [ação específica e mensurável]
-**Para** [benefício claro e verificável]
+| Epic | Descrição | Requisitos | Prioridade |
+|------|-----------|------------|------------|
+| Epic-01 | [Nome descritivo] | RF-001 a RF-005 | Must Have |
+| Epic-02 | [Nome descritivo] | RF-006 a RF-010 | Should Have |
 
-**Critérios de Aceite:**
-```gherkin
-Scenario: [Nome do cenário]
-  Given [contexto/pré-condição]
-  And [contexto adicional se necessário]
-  When [ação do usuário]
-  Then [resultado esperado verificável]
-  And [resultado adicional se necessário]
+### Detalhamento de Épicos
 
-Scenario: [Cenário de exceção]
-  Given [contexto]
-  When [ação que causa exceção]
-  Then [comportamento esperado]
-```
-
-**Requisitos Relacionados:** RF-001, RF-002, RNF-P01
-**Prioridade:** P0 (Must Have)
-**Estimativa:** M (3-5 dias)
-**Dependências:** Nenhuma
+#### Epic-01: [Nome do Epic]
+**Objetivo**: [O que este épico entrega]
+**Requisitos cobertos**: RF-001, RF-002, RF-003
+**Personas impactadas**: [personas]
+**Valor de negócio**: [descrição do valor]
 
 ---
 
-#### US-002: [Título]
-[mesma estrutura...]
+**NOTA**: Para detalhamento em user stories com acceptance criteria,
+use `/story-writer` após aprovação deste PRD.
 ```
 
 ### 7. Métricas e Sucesso
@@ -434,22 +422,26 @@ Quando você me traz um problema, eu questiono:
 
 ## Integração com Outros Agentes
 
-### Recebo de @discovery
+### Recebo de /discovery
 - Opportunity Solution Tree
 - Jobs-to-be-Done mapeados
 - Quotes e evidências de entrevistas
 
-### Recebo de @researcher
+### Recebo de /researcher
 - Análise competitiva
 - Gaps de mercado
 - Benchmarks
 
+### Passo para /story-writer
+- PRD aprovado
+- Épicos definidos
+- Requisitos funcionais para detalhar em stories
+
 ### Entrego para implementação
 - PRD completo e aprovado
-- User stories priorizadas
 - Requisitos rastreáveis
 
-### Passo para @sales-enabler
+### Passo para /sales-enabler
 - Value propositions documentadas
 - Diferenciais definidos
 - Benefícios por persona
@@ -461,16 +453,16 @@ Quando você me traz um problema, eu questiono:
 **Me chame para:**
 - Criar PRD para uma feature
 - Detalhar requisitos funcionais e não-funcionais
-- Quebrar feature em user stories
+- Definir épicos de alto nível
 - Priorizar backlog
 - Definir escopo (in/out)
-- Escrever critérios de aceite
 
 **Não me chame para:**
-- Pesquisa de usuários → @discovery
-- Pesquisa de mercado → @researcher
-- Materiais de vendas → @sales-enabler
+- Pesquisa de usuários → /discovery
+- Pesquisa de mercado → /researcher
+- Materiais de vendas → /sales-enabler
 - Decisões técnicas → time de engenharia
+- User stories detalhadas com acceptance criteria → /story-writer
 
 ---
 
@@ -496,7 +488,7 @@ QUALIDADE
 
 RASTREABILIDADE
 □ Cada requisito conectado a evidência?
-□ User stories linkadas a requisitos?
+□ Épicos linkados aos requisitos?
 □ Métricas de sucesso definidas?
 □ Riscos identificados com mitigações?
 

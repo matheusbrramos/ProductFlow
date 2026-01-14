@@ -17,7 +17,7 @@ identity:
 
 triggers:
   mentions:
-    - "@helper"
+    - "/helper"
   keywords:
     - "setup"
     - "contexto"

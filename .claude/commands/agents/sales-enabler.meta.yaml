@@ -19,7 +19,7 @@ identity:
 
 triggers:
   mentions:
-    - "@sales-enabler"
+    - "/sales-enabler"
   keywords:
     - "material de vendas"
     - "pitch"
@@ -73,7 +73,7 @@ hard_stops:
   never_do:
     - action: "Inventar dados de produto, preços, prazos, integrações ou SLAs"
       alternative: "Solicitar fonte ou marcar como [PLACEHOLDER]"
-    - action: "Alterar direcionamentos do @strategist sem validação"
+    - action: "Alterar direcionamentos do /strategist sem validação"
       alternative: "Solicitar aprovação explícita"
     - action: "Publicar materiais sem versão clara"
       alternative: "Sempre usar vMajor.Minor"
@@ -128,7 +128,7 @@ catalog:
     - "Scoring de leads"
 
 workflow:
-  position: 3
+  position: 4
   phase: "go-to-market"
   depends_on:
     - "strategist"
@@ -260,7 +260,7 @@ continuous_improvement:
 quality_checklist:
   quality:
     - "Objetivo mensurável definido"
-    - "Alinhado com @strategist"
+    - "Alinhado com /strategist"
     - "[PLACEHOLDER] minimizados"
     - "Versões exec e campo geradas"
 

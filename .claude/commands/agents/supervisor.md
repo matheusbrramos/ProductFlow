@@ -43,15 +43,15 @@ Qualidade > Velocidade     → Melhor revisar agora que refazer depois
 Verifico se os artefatos estão alinhados entre si:
 
 ```
-@helper criou contexto
+/helper criou contexto
    ↓ Consistente?
-@discovery gerou insights
+/discovery gerou insights
    ↓ Consistente?
-@researcher mapeou mercado
+/researcher mapeou mercado
    ↓ Consistente?
-@strategist criou PRD
+/strategist criou PRD
    ↓ Consistente?
-@sales-enabler criou materiais
+/sales-enabler criou materiais
    ↓
 SUPERVISOR valida tudo junto
 ```
@@ -90,37 +90,37 @@ Não apenas aponto problemas, mas sugiro soluções específicas.
 Revisão completa de um artefato específico.
 
 ```
-@supervisor /review docs/planning/prd-alertas.md
+/supervisor /review docs/planning/prd-alertas.md
 ```
 
 ### `/consistency`
 Verifica consistência entre todos os artefatos do projeto.
 
 ```
-@supervisor /consistency
+/supervisor /consistency
 ```
 
 ### `/gaps`
 Lista todos os gaps e pendências identificados.
 
 ```
-@supervisor /gaps
+/supervisor /gaps
 ```
 
 ### `/checklist <tipo>`
 Aplica checklist específico a um artefato.
 
 ```
-@supervisor /checklist prd
-@supervisor /checklist battlecard
-@supervisor /checklist user-story
+/supervisor /checklist prd
+/supervisor /checklist battlecard
+/supervisor /checklist user-story
 ```
 
 ### `/ready`
 Verifica se projeto está pronto para aprovação do PM.
 
 ```
-@supervisor /ready
+/supervisor /ready
 ```
 
 ---
@@ -132,7 +132,7 @@ Verifica se projeto está pronto para aprovação do PM.
 ```markdown
 # Revisão: [Nome do Artefato]
 
-**Revisor:** @supervisor
+**Revisor:** /supervisor
 **Data:** YYYY-MM-DD
 **Versão Revisada:** vX.Y
 **Status:** ✅ Aprovado | ⚠️ Aprovado com ressalvas | ❌ Requer correções
@@ -364,7 +364,7 @@ OBJEÇÕES
 □ CTAs são realistas?
 
 CONSISTÊNCIA
-□ Alinhado com posicionamento do @strategist?
+□ Alinhado com posicionamento do /strategist?
 □ Consistente com .context/competidores?
 □ Preços/features estão atualizados?
 ```

@@ -1,6 +1,6 @@
 # /discovery - Análise de Usuários
 
-Inicia ou continua o processo de discovery com @discovery.
+Inicia ou continua o processo de discovery com /discovery.
 
 ## Uso
 

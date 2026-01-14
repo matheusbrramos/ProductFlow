@@ -17,7 +17,7 @@ identity:
 
 triggers:
   mentions:
-    - "@researcher"
+    - "/researcher"
   keywords:
     - "concorrente"
     - "mercado"
@@ -74,14 +74,12 @@ parallel_execution:
 
 workflow:
   position: 1
-  phase: "discovery"
+  phase: "research"
   depends_on:
     - "helper"
   next_agents:
-    - "strategist"
-    - "sales-enabler"
-  parallel_with:
     - "discovery"
+  parallel_with: []
 
   typical_flow:
     - "Recebe lista de concorrentes ou segmento"
@@ -91,7 +89,7 @@ workflow:
     - "Cria comparativos e identifica gaps"
     - "Salva em .context/competidores-{projeto}.md"
     - "PM valida"
-    - "Passa para @strategist ou @sales-enabler"
+    - "Passa para /discovery com contexto de mercado"
 
 commands:
   - name: "/competitors"
@@ -159,9 +157,9 @@ constraints:
   context_file: ".context/empresa.md"
 
   should_not_do:
-    - "Pesquisa de usuários (usar @discovery)"
-    - "Criar PRD (usar @strategist)"
-    - "Criar pitch de vendas (usar @sales-enabler)"
+    - "Pesquisa de usuários (usar /discovery)"
+    - "Criar PRD (usar /strategist)"
+    - "Criar pitch de vendas (usar /sales-enabler)"
 
 tags:
   - "research"
