@@ -54,11 +54,12 @@ seu-projeto/
 ├── CLAUDE.md                    # Regras globais do ProductFlow
 ├── .claude/
 │   └── commands/
-│       ├── agents/              # 6 agentes especializados
+│       ├── agents/              # 7 agentes especializados
 │       │   ├── helper.md
-│       │   ├── discovery.md
 │       │   ├── researcher.md
+│       │   ├── discovery.md
 │       │   ├── strategist.md
+│       │   ├── story-writer.md
 │       │   ├── sales-enabler.md
 │       │   └── supervisor.md
 │       └── quick/               # Comandos rápidos
@@ -66,6 +67,7 @@ seu-projeto/
 │           ├── discovery.md
 │           ├── competitors.md
 │           ├── prd.md
+│           ├── stories.md
 │           ├── sales.md
 │           ├── review.md
 │           └── status.md
@@ -90,12 +92,13 @@ seu-projeto/
 
 | Agente | Comando | Responsabilidade |
 |--------|---------|------------------|
-| **Helper** | `@helper` | Coleta contexto da empresa (proativo) |
-| **Discovery** | `@discovery` | Entrevistas, OST, JTBD (Teresa Torres) |
-| **Researcher** | `@researcher` | Mercado, concorrentes (execução paralela) |
-| **Strategist** | `@strategist` | PRD, requisitos, user stories |
-| **Sales-Enabler** | `@sales-enabler` | Materiais de vendas e GTM |
-| **Supervisor** | `@supervisor` | Revisão de qualidade e consistência |
+| **Helper** | `/helper` | Coleta contexto da empresa (proativo) |
+| **Researcher** | `/researcher` | Mercado, concorrentes (execução paralela) |
+| **Discovery** | `/discovery` | Entrevistas, OST, JTBD (Teresa Torres) |
+| **Strategist** | `/strategist` | PRD, épicos, requisitos, priorização |
+| **Story-Writer** | `/story-writer` | User stories detalhadas e acceptance criteria |
+| **Sales-Enabler** | `/sales-enabler` | Materiais de vendas e GTM |
+| **Supervisor** | `/supervisor` | Revisão de qualidade e consistência |
 
 ---
 
@@ -107,6 +110,7 @@ seu-projeto/
 | `/discovery <ação>` | Análise de usuários |
 | `/competitors <lista>` | Análise de concorrentes |
 | `/prd <feature>` | Cria PRD completo |
+| `/stories` | Detalha user stories do PRD |
 | `/sales` | Materiais de vendas |
 | `/review` | Revisão de qualidade |
 | `/status` | Status do projeto |
@@ -118,14 +122,16 @@ seu-projeto/
 ```
 1. /setup www.suaempresa.com.br    # Contexto da empresa
         ↓
-2. /discovery analyze [dados]       # Insights de usuários
-   /competitors Conc1, Conc2        # Análise de mercado
+2. /competitors Conc1, Conc2        # Análise de mercado
+   /discovery analyze [dados]       # Insights de usuários
         ↓
 3. /prd "Nome da Feature"           # Especificação completa
         ↓
-4. /sales                           # Materiais de vendas
+4. /stories                         # User stories detalhadas
         ↓
-5. /review ready                    # Validação final
+5. /sales                           # Materiais de vendas
+        ↓
+6. /review ready                    # Validação final
 ```
 
 ---
@@ -207,4 +213,4 @@ Criado com Claude Code.
 
 ---
 
-**ProductFlow v1.0** - Seu parceiro sênior para Product Management
+**ProductFlow v2.0** - Seu parceiro sênior para Product Management
