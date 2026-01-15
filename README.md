@@ -2,13 +2,13 @@
 
 Sistema de agentes especializados para Product Managers usando Claude Code.
 
-**ProductFlow** é seu parceiro sênior para as etapas anteriores ao desenvolvimento de produto: discovery, pesquisa de mercado, especificação e go-to-market.
+**ProductFlow** e seu parceiro senior para as etapas anteriores ao desenvolvimento de produto: discovery, pesquisa de mercado, especificacao e go-to-market.
 
 ---
 
-## Instalação Rápida
+## Instalacao Rapida
 
-### Opção 1: Clonar direto na pasta do seu projeto
+### Opcao 1: Clonar direto na pasta do seu projeto
 
 ```bash
 # Na raiz do seu projeto, execute:
@@ -18,28 +18,19 @@ cp .productflow-temp/CLAUDE.md CLAUDE.md
 rm -rf .productflow-temp
 
 # Crie as pastas de contexto
-mkdir -p .context docs/discovery docs/research docs/planning/stories docs/sales docs/reviews .productflow/snapshots .productflow/memory
+mkdir -p .context docs/discovery docs/research docs/prd docs/stories docs/sales docs/reviews docs/briefings docs/templates .productflow/snapshots .productflow/memory
 ```
 
-### Opção 2: Download manual
-
-1. Baixe o ZIP do repositório
-2. Copie a pasta `.claude` para a raiz do seu projeto
-3. Copie o arquivo `CLAUDE.md` para a raiz do seu projeto
-4. Crie as pastas necessárias (veja estrutura abaixo)
-
-### Opção 3: Script de instalação (Windows PowerShell)
+### Opcao 2: Script de instalacao (Windows PowerShell)
 
 ```powershell
-# Execute no PowerShell na pasta do seu projeto:
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/matheusbrramos/ProductFlow/main/install.ps1" -OutFile "install.ps1"
 .\install.ps1
 ```
 
-### Opção 4: Script de instalação (Linux/Mac)
+### Opcao 3: Script de instalacao (Linux/Mac)
 
 ```bash
-# Execute no terminal na pasta do seu projeto:
 curl -sSL https://raw.githubusercontent.com/matheusbrramos/ProductFlow/main/install.sh | bash
 ```
 
@@ -47,40 +38,41 @@ curl -sSL https://raw.githubusercontent.com/matheusbrramos/ProductFlow/main/inst
 
 ## Estrutura de Pastas
 
-Após instalação, seu projeto terá:
+Apos instalacao, seu projeto tera:
 
 ```
 seu-projeto/
 ├── CLAUDE.md                    # Regras globais do ProductFlow
 ├── .claude/
-│   └── commands/
-│       ├── agents/              # 7 agentes especializados
-│       │   ├── helper.md
-│       │   ├── researcher.md
-│       │   ├── discovery.md
-│       │   ├── strategist.md
-│       │   ├── story-writer.md
-│       │   ├── sales-enabler.md
-│       │   └── supervisor.md
-│       └── quick/               # Comandos rápidos
-│           ├── setup.md
-│           ├── discovery.md
-│           ├── competitors.md
-│           ├── prd.md
-│           ├── stories.md
-│           ├── sales.md
-│           ├── review.md
-│           └── status.md
-├── .context/                    # Contexto do projeto (criado pelos agentes)
-│   ├── empresa.md
-│   └── competidores-{projeto}.md
+│   ├── agents/                  # 7 subagents especializados
+│   │   ├── helper.md
+│   │   ├── researcher.md
+│   │   ├── discovery.md
+│   │   ├── strategist.md
+│   │   ├── story-writer.md
+│   │   ├── sales-enabler.md
+│   │   └── supervisor.md
+│   └── commands/                # Slash commands
+│       ├── setup.md             # /setup
+│       ├── research.md          # /research
+│       ├── discovery.md         # /discovery
+│       ├── prd.md               # /prd
+│       ├── stories.md           # /stories
+│       ├── sales.md             # /sales
+│       ├── review.md            # /review
+│       └── status.md            # /status
+├── .context/                    # Contexto do projeto
+│   ├── empresa.md               # Criado por /setup
+│   └── competidores-{projeto}.md # Criado por /research
 ├── docs/
-│   ├── discovery/               # Insights de usuários
-│   ├── research/                # Pesquisas de mercado
-│   ├── planning/                # PRDs e specs
-│   │   └── stories/             # User stories
+│   ├── briefings/               # Resumos dos agentes
+│   ├── templates/               # Templates de PRD e SDD
+│   ├── research/                # docs/research/{tema}-YYYY-MM-DD.md
+│   ├── discovery/               # docs/discovery/{tema}-YYYY-MM-DD.md
+│   ├── prd/                     # docs/prd/{feature}.md
+│   ├── stories/                 # docs/stories/{feature}.md
 │   ├── sales/                   # Materiais de vendas
-│   └── reviews/                 # Revisões de qualidade
+│   └── reviews/                 # docs/reviews/{feature}-review.md
 └── .productflow/
     ├── snapshots/               # Estados do projeto
     └── memory/                  # Contexto persistente
@@ -88,129 +80,141 @@ seu-projeto/
 
 ---
 
-## Agentes Disponíveis
+## Subagents vs Commands
 
-| Agente | Comando | Responsabilidade |
-|--------|---------|------------------|
-| **Helper** | `/helper` | Coleta contexto da empresa (proativo) |
-| **Researcher** | `/researcher` | Mercado, concorrentes (execução paralela) |
-| **Discovery** | `/discovery` | Entrevistas, OST, JTBD (Teresa Torres) |
-| **Strategist** | `/strategist` | PRD, épicos, requisitos, priorização |
-| **Story-Writer** | `/story-writer` | User stories detalhadas e acceptance criteria |
-| **Sales-Enabler** | `/sales-enabler` | Materiais de vendas e GTM |
-| **Supervisor** | `/supervisor` | Revisão de qualidade e consistência |
+ProductFlow usa dois conceitos do Claude Code:
+
+### Subagents (`.claude/agents/`)
+
+Agentes especializados que podem ser invocados via Task tool para tarefas complexas e autonomas. Cada subagent tem sua propria personalidade e expertise.
+
+| Subagent | Foco |
+|----------|------|
+| helper | Coleta contexto da empresa (proativo) |
+| researcher | Mercado, concorrentes (execucao paralela) |
+| discovery | Entrevistas, OST, JTBD (Teresa Torres) |
+| strategist | PRD, epicos, requisitos, priorizacao |
+| story-writer | User stories detalhadas e acceptance criteria |
+| sales-enabler | Materiais de vendas e GTM |
+| supervisor | Revisao de qualidade e consistencia |
+
+### Slash Commands (`.claude/commands/`)
+
+Atalhos para acoes comuns. Cada comando usa $ARGUMENTS para receber entrada do usuario.
+
+| Comando | Descricao | Output |
+|---------|-----------|--------|
+| `/setup <site>` | Inicia contexto do projeto | `.context/empresa.md` |
+| `/research <tema>` | Pesquisa de mercado/concorrentes | `docs/research/{tema}-YYYY-MM-DD.md` |
+| `/discovery <acao>` | Analise de usuarios | `docs/discovery/{tema}-YYYY-MM-DD.md` |
+| `/prd <feature>` | Cria PRD completo | `docs/prd/{feature}.md` |
+| `/stories <feature>` | Detalha user stories | `docs/stories/{feature}.md` |
+| `/sales` | Materiais de vendas | `docs/sales/` |
+| `/review <artefato>` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
+| `/status` | Status do projeto | (exibe no terminal) |
 
 ---
 
-## Comandos Rápidos
+## Contrato de Arquivos
 
-| Comando | Descrição |
-|---------|-----------|
-| `/setup <site>` | Inicia contexto do projeto |
-| `/discovery <ação>` | Análise de usuários |
-| `/competitors <lista>` | Análise de concorrentes |
-| `/prd <feature>` | Cria PRD completo |
-| `/stories` | Detalha user stories do PRD |
-| `/sales` | Materiais de vendas |
-| `/review` | Revisão de qualidade |
-| `/status` | Status do projeto |
+### .context/ - Contexto Persistente
+
+Arquivos de contexto que persistem entre sessoes e sao usados por todos os agentes:
+
+- **empresa.md**: Missao, visao, produtos, publico-alvo, diferenciais, metas
+- **competidores-{projeto}.md**: Analise competitiva consolidada
+
+### .productflow/ - Estado Interno
+
+- **snapshots/**: Estados salvos do projeto
+- **memory/**: Contexto acumulado entre sessoes
+
+### docs/ - Artefatos de Trabalho
+
+Todos os artefatos seguem o padrao de nomenclatura:
+
+```
+docs/research/{tema}-YYYY-MM-DD.md
+docs/discovery/{tema}-YYYY-MM-DD.md
+docs/prd/{feature}.md
+docs/stories/{feature}.md
+docs/reviews/{feature}-review.md
+```
 
 ---
 
-## Fluxo de Trabalho Típico
+## Fluxo de Trabalho Tipico
 
 ```
 1. /setup www.suaempresa.com.br    # Contexto da empresa
-        ↓
-2. /competitors Conc1, Conc2        # Análise de mercado
-   /discovery analyze [dados]       # Insights de usuários
-        ↓
-3. /prd "Nome da Feature"           # Especificação completa
-        ↓
-4. /stories                         # User stories detalhadas
-        ↓
+        |
+2. /research Conc1, Conc2          # Analise de mercado
+   /discovery analyze [dados]       # Insights de usuarios
+        |
+3. /prd "Nome da Feature"           # Especificacao completa
+        |
+4. /stories "Nome da Feature"       # User stories detalhadas
+        |
 5. /sales                           # Materiais de vendas
-        ↓
-6. /review ready                    # Validação final
+        |
+6. /review ready                    # Validacao final
 ```
 
 ---
 
-## Princípios do ProductFlow
+## Exemplo Real de Execucao
 
-1. **Parceria Sênior**: Agentes questionam e orientam, não apenas executam
+```bash
+# 1. Iniciar contexto
+/setup www.sympla.com.br
+
+# 2. Pesquisar mercado
+/research Eventbrite, Ingresse, Tickets For Fun
+
+# 3. Criar PRD
+/prd "Alertas inteligentes de vendas"
+
+# 4. Detalhar stories
+/stories "Alertas inteligentes de vendas"
+
+# 5. Revisar
+/review docs/prd/alertas-inteligentes-de-vendas.md
+```
+
+---
+
+## Principios do ProductFlow
+
+1. **Parceria Senior**: Agentes questionam e orientam, nao apenas executam
 2. **Qualidade > Economia**: Prioriza profundidade sobre velocidade
-3. **Validação pelo PM**: Todo artefato é validado antes de avançar
-4. **Proatividade**: Agentes pesquisam automaticamente quando possível
-5. **Consistência**: Supervisor garante alinhamento entre artefatos
+3. **Validacao pelo PM**: Todo artefato e validado antes de avancar
+4. **Evidencia > Opiniao**: Basear em dados e pesquisa
+5. **Consistencia**: Supervisor garante alinhamento entre artefatos
 
 ---
 
 ## Requisitos
 
 - [Claude Code](https://claude.ai/code) instalado
-- Acesso à internet (para pesquisas dos agentes)
-
----
-
-## Exemplos de Uso
-
-### Iniciando um novo projeto
-
-```
-Você: @helper /setup www.sympla.com.br
-
-Helper: Pesquisando informações sobre Sympla...
-[Apresenta dados coletados automaticamente]
-[Faz perguntas sobre o que não encontrou]
-[Cria .context/empresa.md]
-```
-
-### Analisando concorrentes
-
-```
-Você: @researcher /competitors Eventbrite, Ingresse, Blueticket
-
-Researcher: Lançando análise paralela de 3 concorrentes...
-[Sub-agente 1] Analisando Eventbrite...
-[Sub-agente 2] Analisando Ingresse...
-[Sub-agente 3] Analisando Blueticket...
-[Consolida em .context/competidores-sympla.md]
-```
-
-### Criando PRD
-
-```
-Você: @strategist /prd "Alertas inteligentes de vendas"
-
-Strategist: Verificando contexto e evidências...
-[Cria PRD completo com requisitos F/NF detalhados]
-[Marca ambiguidades com [NEEDS CLARIFICATION]]
-```
+- Acesso a internet (para pesquisas dos agentes)
 
 ---
 
 ## Contribuindo
 
-Contribuições são bem-vindas! Por favor:
+Contribuicoes sao bem-vindas! Por favor:
 
-1. Fork o repositório
+1. Fork o repositorio
 2. Crie uma branch para sua feature
-3. Faça commit das mudanças
+3. Faca commit das mudancas
 4. Abra um Pull Request
 
 ---
 
-## Licença
+## Licenca
 
 MIT License - veja [LICENSE](LICENSE) para detalhes.
 
 ---
 
-## Autor
-
-Criado com Claude Code.
-
----
-
-**ProductFlow v2.0** - Seu parceiro sênior para Product Management
+**ProductFlow v3.0** - Seu parceiro senior para Product Management
