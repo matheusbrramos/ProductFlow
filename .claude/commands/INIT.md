@@ -1,84 +1,99 @@
-# ProductFlow - Inicialização Rápida
+---
+description: ProductFlow - Inicializacao Rapida
+---
 
-Sistema de **7 agentes especializados** para Product Management.
+# ProductFlow - Inicializacao Rapida
+
+Sistema de **7 subagents especializados** para Product Management.
 
 ## Fluxo Sequencial
 
 ```
-/helper → /researcher → /discovery → /strategist → /story-writer → /sales-enabler
-                                                                          ↓
-                                                              /supervisor (qualidade)
+/setup -> /research -> /discovery -> /prd -> /stories -> /sales
+                                                            |
+                                                      /review (qualidade)
 ```
 
-## Agentes
+## Slash Commands
 
-| # | Agente | Foco | Comando |
-|---|--------|------|---------|
-| 0 | Helper | Contexto da empresa | `/helper` |
-| 1 | Researcher | Mercado e concorrentes | `/researcher` |
-| 2 | Discovery | Pesquisa de usuários | `/discovery` |
-| 3 | Strategist | PRD e requisitos | `/strategist` |
-| 3.5 | Story-Writer | User stories detalhadas | `/story-writer` |
-| 4 | Sales-Enabler | Materiais de vendas | `/sales-enabler` |
-| 5 | Supervisor | Revisão de qualidade | `/supervisor` |
+| Comando | Descricao | Output |
+|---------|-----------|--------|
+| `/setup <site>` | Contexto da empresa | `.context/empresa.md` |
+| `/research <tema>` | Mercado e concorrentes | `docs/research/{tema}-YYYY-MM-DD.md` |
+| `/discovery <acao>` | Pesquisa de usuarios | `docs/discovery/{tema}-YYYY-MM-DD.md` |
+| `/prd <feature>` | PRD completo | `docs/prd/{feature}.md` |
+| `/stories <feature>` | User stories | `docs/stories/{feature}.md` |
+| `/sales` | Materiais de vendas | `docs/sales/` |
+| `/review <artefato>` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
+| `/status` | Status do projeto | (terminal) |
+
+## Subagents (`.claude/agents/`)
+
+| Subagent | Foco |
+|----------|------|
+| helper | Coleta contexto (proativo) |
+| researcher | Mercado, concorrentes (paralelo) |
+| discovery | OST, JTBD, entrevistas |
+| strategist | PRD, requisitos |
+| story-writer | User stories, acceptance criteria |
+| sales-enabler | Materiais de vendas |
+| supervisor | Revisao de qualidade |
 
 ## Contexto Persistente
 
-| Arquivo | Criado por | Conteúdo |
+| Arquivo | Criado por | Conteudo |
 |---------|------------|----------|
-| `.context/empresa.md` | /helper | Missão, produtos, público, diferenciais |
-| `.context/competidores-{x}.md` | /researcher | Análise competitiva, TAM/SAM/SOM |
+| `.context/empresa.md` | /setup | Missao, produtos, publico, diferenciais |
+| `.context/competidores-{x}.md` | /research | Analise competitiva, TAM/SAM/SOM |
 
-## Outputs por Fase
+## Contrato de Outputs
 
-| Fase | Diretório | Exemplos |
-|------|-----------|----------|
-| Research | `docs/research/` | sizing, trends, players |
-| Discovery | `docs/discovery/` | entrevistas, OST, JTBD |
-| Planning | `docs/planning/` | PRDs, specs |
-| Stories | `docs/planning/stories/` | user stories detalhadas |
-| Sales | `docs/sales/` | decks, battlecards, playbooks |
-| Reviews | `docs/reviews/` | revisões de qualidade |
+| Fase | Diretorio | Formato |
+|------|-----------|---------|
+| Research | `docs/research/` | `{tema}-YYYY-MM-DD.md` |
+| Discovery | `docs/discovery/` | `{tema}-YYYY-MM-DD.md` |
+| PRD | `docs/prd/` | `{feature}.md` |
+| Stories | `docs/stories/` | `{feature}.md` |
+| Sales | `docs/sales/` | varios |
+| Reviews | `docs/reviews/` | `{feature}-review.md` |
 
-## Princípios Core
+## Principios Core
 
-1. **Parceria Sênior**: Questionar, orientar, apontar riscos
-2. **Validação PM**: Tudo precisa aprovação do PM
-3. **Evidência > Opinião**: Basear em dados
+1. **Parceria Senior**: Questionar, orientar, apontar riscos
+2. **Validacao PM**: Tudo precisa aprovacao do PM
+3. **Evidencia > Opiniao**: Basear em dados
 4. **Contexto Primeiro**: Sempre carregar `.context/empresa.md`
 
 ## Quick Start
 
 ```bash
 # 1. Setup inicial
-/helper "https://suaempresa.com"
+/setup www.suaempresa.com.br
 
 # 2. Pesquisa de mercado
-/researcher /competitors "Empresa A, Empresa B"
+/research Concorrente1, Concorrente2
 
-# 3. Discovery de usuários
-/discovery /analyze [dados]
+# 3. Discovery de usuarios
+/discovery analyze [dados]
 
 # 4. Criar PRD
-/strategist /prd "Nome da Feature"
+/prd "Nome da Feature"
 
 # 5. Detalhar stories
-/story-writer /stories "PRD criado"
+/stories "Nome da Feature"
 
 # 6. Materiais de vendas
-/sales-enabler /catalogo
+/sales
 
 # 7. Revisar qualidade
-/supervisor /review
+/review ready
 ```
 
 ## Para Detalhes
 
-Cada agente tem documentação completa em:
-`.claude/commands/agents/{agente}.md`
-
-Briefings resumidos em:
-`.claude/commands/briefings/{agente}.brief.md`
+- Subagents: `.claude/agents/{agente}.md`
+- Commands: `.claude/commands/{comando}.md`
+- Briefings: `docs/briefings/{agente}.brief.md`
 
 ---
-*ProductFlow v2.0*
+*ProductFlow v3.0*
