@@ -2,7 +2,16 @@
 .context/
 
 # Documentos gerados (específicos de cada projeto)
-docs/
+docs/discovery/
+docs/research/
+docs/prd/
+docs/stories/
+docs/sales/apresentacao-*/
+docs/reviews/
+
+# Manter no repo (templates e briefings)
+!docs/briefings/
+!docs/templates/
 
 # Snapshots e memória local
 .productflow/
