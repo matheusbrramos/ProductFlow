@@ -1,9 +1,9 @@
 ---
-description: Mostrar status atual do projeto e artefatos criados
-argument-hint: [agente ou artefato] (opcional)
+description: "Mostrar status atual do projeto ProductFlow e artefatos criados"
+argument-hint: "[agente ou artefato] (opcional)"
 ---
 
-# /status - Status do Projeto
+# /pf-status - Status do Projeto
 
 Mostra o status atual do projeto e artefatos criados.
 
@@ -79,20 +79,20 @@ PROXIMO PASSO SUGERIDO
 
 ## Variacoes
 
-### /status discovery
+### /pf-status discovery
 Mostrar apenas status da fase de discovery.
 
-### /status prd
+### /pf-status prd
 Mostrar apenas status de PRDs.
 
-### /status <arquivo>
+### /pf-status <arquivo>
 Mostrar status de um artefato especifico.
 
 ## Exemplos
 
 ```
-/status
-/status discovery
-/status prd
-/status docs/prd/alertas.md
+/pf-status
+/pf-status discovery
+/pf-status prd
+/pf-status docs/prd/alertas.md
 ```

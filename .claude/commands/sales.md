@@ -1,6 +1,6 @@
 ---
-description: Criar materiais de vendas e go-to-market
-argument-hint: [gerar <tipo>] (opcional)
+description: "Criar materiais de vendas e go-to-market"
+argument-hint: "[gerar <tipo>] (opcional)"
 ---
 
 # /sales - Materiais de Vendas

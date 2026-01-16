@@ -1,6 +1,6 @@
 ---
-description: Iniciar contexto do projeto coletando informacoes da empresa
-argument-hint: <site ou nome da empresa>
+description: "Iniciar contexto do projeto coletando informacoes da empresa"
+argument-hint: "<site ou nome da empresa>"
 ---
 
 # /setup - Iniciar Contexto do Projeto

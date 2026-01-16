@@ -1,8 +1,9 @@
 ---
-description: ProductFlow - Inicializacao Rapida
+description: "ProductFlow - Inicializacao rapida e visao geral do sistema"
+argument-hint: ""
 ---
 
-# ProductFlow - Inicializacao Rapida
+# /pf-init - ProductFlow Inicializacao Rapida
 
 Sistema de **7 subagents especializados** para Product Management.
 
@@ -11,7 +12,7 @@ Sistema de **7 subagents especializados** para Product Management.
 ```
 /setup -> /research -> /discovery -> /prd -> /stories -> /sales
                                                             |
-                                                      /review (qualidade)
+                                                      /pf-review (qualidade)
 ```
 
 ## Slash Commands
@@ -24,8 +25,9 @@ Sistema de **7 subagents especializados** para Product Management.
 | `/prd <feature>` | PRD completo | `docs/prd/{feature}.md` |
 | `/stories <feature>` | User stories | `docs/stories/{feature}.md` |
 | `/sales` | Materiais de vendas | `docs/sales/` |
-| `/review <artefato>` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
-| `/status` | Status do projeto | (terminal) |
+| `/pf-review <artefato>` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
+| `/pf-status` | Status do projeto | (terminal) |
+| `/pf-spec <feature>` | Software Design Document | `docs/sdd/{feature}.md` |
 
 ## Subagents (`.claude/agents/`)
 
@@ -86,7 +88,10 @@ Sistema de **7 subagents especializados** para Product Management.
 /sales
 
 # 7. Revisar qualidade
-/review ready
+/pf-review ready
+
+# 8. Verificar status
+/pf-status
 ```
 
 ## Para Detalhes

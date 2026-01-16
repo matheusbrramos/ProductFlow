@@ -1,6 +1,6 @@
 ---
-description: Criar user stories detalhadas com acceptance criteria
-argument-hint: <feature ou PRD>
+description: "Criar user stories detalhadas com acceptance criteria"
+argument-hint: "<feature ou PRD>"
 ---
 
 # /stories - Criar User Stories Detalhadas
@@ -100,7 +100,7 @@ Scenario: [descricao]
 
 ## Proximos passos sugeridos
 
-- `/review` - Revisar qualidade das stories
+- `/pf-review` - Revisar qualidade das stories
 - Entregar para time de desenvolvimento
 
 ## Exemplos

@@ -1,6 +1,6 @@
 ---
-description: Criar Product Requirements Document completo
-argument-hint: <nome da feature ou produto>
+description: "Criar Product Requirements Document completo"
+argument-hint: "<nome da feature ou produto>"
 ---
 
 # /prd - Criar Product Requirements Document
@@ -62,8 +62,9 @@ Usar estrutura completa do PRD com todas as secoes obrigatorias.
 
 ## Proximos passos sugeridos
 
-- `/review` - Revisar qualidade do PRD
+- `/pf-review` - Revisar qualidade do PRD
 - `/stories <feature>` - Detalhar user stories
+- `/pf-spec <feature>` - Criar Software Design Document
 
 ## Exemplos
 

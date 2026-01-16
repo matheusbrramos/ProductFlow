@@ -1,6 +1,6 @@
 ---
-description: Analise de usuarios, entrevistas, OST e JTBD
-argument-hint: <acao> [dados] (analyze, interview, ost, jtbd, synthesize)
+description: "Analise de usuarios, entrevistas, OST e JTBD"
+argument-hint: "<acao> [dados] (analyze, interview, ost, jtbd, synthesize)"
 ---
 
 # /discovery - Analise de Usuarios

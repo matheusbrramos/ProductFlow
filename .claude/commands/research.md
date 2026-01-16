@@ -1,6 +1,6 @@
 ---
-description: Pesquisa de mercado e analise de concorrentes
-argument-hint: <tema ou lista de concorrentes>
+description: "Pesquisa de mercado e analise de concorrentes"
+argument-hint: "<tema ou lista de concorrentes>"
 ---
 
 # /research - Pesquisa de Mercado e Concorrentes

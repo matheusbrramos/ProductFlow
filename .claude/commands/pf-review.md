@@ -1,9 +1,9 @@
 ---
-description: Revisao de qualidade de artefatos
-argument-hint: <artefato ou acao> (arquivo, consistency, gaps, ready)
+description: "Revisao de qualidade de artefatos ProductFlow"
+argument-hint: "<artefato ou acao> (arquivo, consistency, gaps, ready)"
 ---
 
-# /review - Revisao de Qualidade
+# /pf-review - Revisao de Qualidade
 
 Aciona o agente Supervisor para revisar artefatos.
 
@@ -17,7 +17,7 @@ Se nenhum argumento for fornecido, perguntar o que revisar.
 
 ## Acoes Disponiveis
 
-### /review <arquivo>
+### /pf-review <arquivo>
 Revisao completa de um artefato especifico.
 
 **O que fazer:**
@@ -27,7 +27,7 @@ Revisao completa de um artefato especifico.
 4. Identificar issues por severidade
 5. Sugerir correcoes especificas
 
-### /review consistency
+### /pf-review consistency
 Verifica consistencia entre todos os artefatos do projeto.
 
 **O que fazer:**
@@ -36,7 +36,7 @@ Verifica consistencia entre todos os artefatos do projeto.
 3. Identificar contradicoes
 4. Criar matriz de consistencia
 
-### /review gaps
+### /pf-review gaps
 Lista todos os gaps e pendencias.
 
 **O que fazer:**
@@ -45,7 +45,7 @@ Lista todos os gaps e pendencias.
 3. Identificar informacoes faltantes
 4. Listar por severidade
 
-### /review ready
+### /pf-review ready
 Verifica se projeto esta pronto para aprovacao.
 
 **O que fazer:**
@@ -81,7 +81,7 @@ Criar arquivo: `docs/reviews/{feature}-review.md`
 ```markdown
 # Revisao: [Nome do Artefato]
 
-**Revisor:** /review
+**Revisor:** /pf-review
 **Data:** YYYY-MM-DD
 **Versao Revisada:** vX.Y
 **Status:** Aprovado | Aprovado com ressalvas | Requer correcoes
@@ -111,8 +111,8 @@ Criar arquivo: `docs/reviews/{feature}-review.md`
 ## Exemplos
 
 ```
-/review docs/prd/alertas.md
-/review consistency
-/review gaps
-/review ready
+/pf-review docs/prd/alertas.md
+/pf-review consistency
+/pf-review gaps
+/pf-review ready
 ```
