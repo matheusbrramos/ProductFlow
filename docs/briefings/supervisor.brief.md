@@ -1,10 +1,10 @@
-# /supervisor - Briefing
+# Supervisor Agent - Briefing
 
 **Foco**: Revisao de qualidade e consistencia
 **Fase**: 5 (pode revisar qualquer artefato)
 **Recebe de**: Todos os agentes
 
-## Comandos
+## Como Invocar
 - `/pf-review <artefato>` - Revisao completa
 - `/pf-review consistency` - Verifica consistencia entre artefatos
 - `/pf-review gaps` - Lista pendencias

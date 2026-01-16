@@ -1,14 +1,16 @@
-# /researcher - Briefing
+# Researcher Agent - Briefing
 
 **Foco**: Pesquisa de mercado e concorrentes
-**Fase**: 1 (apos /helper, antes de /discovery)
+**Fase**: 1 (apos `/setup`, antes de `/discovery`)
 **Depende**: `.context/empresa.md`
 
-## Comandos
-- `/research <tema>` - Pesquisa de mercado e concorrentes
-- `/competitors <lista>` - Analise competitiva paralela
-- `/sizing <segmento>` - TAM/SAM/SOM
-- `/trends <segmento>` - Tendencias de mercado
+## Como Invocar
+- `/research <tema>` - Pesquisa geral de mercado
+- `/research competitors "<lista>"` - Analise competitiva (modo competitors)
+- `/research sizing "<segmento>"` - TAM/SAM/SOM (modo sizing)
+- `/research trends "<segmento>"` - Tendencias de mercado (modo trends)
+
+**Nota**: competitors, sizing e trends sao MODOS do comando `/research`, nao comandos separados.
 
 ## Output
 - `.context/competidores-{projeto}.md` - Analise consolidada
@@ -21,7 +23,7 @@
 - Documenta todas as fontes
 
 ## Nao faz
-- Pesquisa de usuarios -> /discovery
-- Criar PRD -> /prd
+- Pesquisa de usuarios -> `/discovery`
+- Criar PRD -> `/prd`
 
 -> Detalhes: `.claude/agents/researcher.md`

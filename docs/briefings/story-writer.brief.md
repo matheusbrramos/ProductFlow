@@ -1,8 +1,8 @@
-# /story-writer - Briefing
+# Story Writer Agent - Briefing
 
 **Foco**: User stories e acceptance criteria
-**Fase**: 3.5 (apos /prd)
-**Depende**: PRD aprovado de /strategist
+**Fase**: 3.5 (apos `/prd`)
+**Depende**: PRD aprovado
 
 ## Selecao de Modelo
 **Sempre pergunta ao PM qual modelo usar**:
@@ -10,11 +10,15 @@
 2. Economico (Haiku) - Stories simples
 3. Automatico - Agente decide
 
-## Comandos
+## Como Invocar
 - `/stories <feature>` - Quebra PRD em stories
-- `/expand <story-id>` - Expande com mais contexto
-- `/split <story-id>` - Divide story grande
-- `/map <feature>` - Cria story map
+
+**Tecnicas internas** (usadas automaticamente pelo agente):
+- **expand**: Expande story com mais contexto
+- **split**: Divide story grande em menores
+- **map**: Cria story map visual
+
+Estas tecnicas sao aplicadas internamente conforme necessidade, nao sao comandos separados.
 
 ## Output
 - `docs/stories/{feature}.md` - Stories detalhadas
@@ -27,7 +31,7 @@
 - Estima complexidade
 
 ## Nao faz
-- Definir requisitos -> /prd
+- Definir requisitos -> `/prd`
 - Mudar escopo do PRD
 - Escrever codigo
 

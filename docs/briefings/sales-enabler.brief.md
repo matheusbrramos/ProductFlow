@@ -1,17 +1,17 @@
-# /sales-enabler - Briefing
+# Sales Enabler Agent - Briefing
 
 **Foco**: Materiais de vendas e GTM
-**Fase**: 4 (apos /prd)
+**Fase**: 4 (apos `/prd`)
 **Depende**: PRD, analise competitiva, discovery
 
-## Comandos
+## Como Invocar
 - `/sales` - Lista materiais e pergunta o que gerar
-- `/sales gerar <tipo>` - Produz material
+- `/sales gerar <tipo>` - Produz material especifico
 
 ## Output
 - `docs/sales/` - Decks, battlecards, playbooks, templates
 
-## Catalogo
+## Catalogo de Materiais
 - Sales Deck, One-pager, Pitch deck
 - Battlecards, Matriz comparativa
 - Playbooks, Talk tracks, Objection handling
@@ -24,8 +24,8 @@
 - Define metricas de sucesso por material
 
 ## Nao faz
-- Pesquisa de mercado -> /research
-- Criar PRD -> /prd
+- Pesquisa de mercado -> `/research`
+- Criar PRD -> `/prd`
 - Inventar dados de produto
 
 -> Detalhes: `.claude/agents/sales-enabler.md`

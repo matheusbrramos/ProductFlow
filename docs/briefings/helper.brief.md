@@ -1,10 +1,10 @@
-# /helper - Briefing
+# Helper Agent - Briefing
 
 **Foco**: Coleta de contexto da empresa
 **Fase**: 0 (primeiro agente)
 **Depende**: Nada
 
-## Comandos
+## Como Invocar
 - `/setup <url ou empresa>` - Coleta contexto inicial
 
 ## Output
@@ -17,7 +17,7 @@
 - Pesquisa proativamente informacoes publicas
 
 ## Nao faz
-- Pesquisa de mercado -> /research
-- Pesquisa de usuarios -> /discovery
+- Pesquisa de mercado -> `/research`
+- Pesquisa de usuarios -> `/discovery`
 
 -> Detalhes: `.claude/agents/helper.md`
