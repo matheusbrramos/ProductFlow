@@ -197,13 +197,24 @@ def validate_agents(result):
             if name != name.lower() or ' ' in name:
                 result.add_warning(f"{agent_file}: 'name' deve ser lowercase com hifens: {name}")
 
+        # Verifica contrato de escrita: agentes com disallowedTools Write/Edit nao devem prometer criar arquivos
+        has_write_disabled = 'disallowedTools' in frontmatter or 'Write' in content.split('disallowedTools')[0] if 'disallowedTools' in content else False
+        if 'disallowedTools' in content:
+            disallowed_section = content.split('disallowedTools')[1].split('---')[0] if '---' in content.split('disallowedTools')[1] else content.split('disallowedTools')[1][:200]
+            if 'Write' in disallowed_section or 'Edit' in disallowed_section:
+                # Verifica se promete criar arquivos
+                if 'Crio arquivos' in content or 'Crio o arquivo' in content:
+                    result.add_warning(f"{agent_file}: Agente com Write/Edit bloqueado promete 'Crio arquivos' (use 'Entrego conteudo')")
+
 
 def find_command_references(content):
     """Encontra todas as referencias a comandos (formato /comando) no conteudo."""
-    # Pattern para /comando (excluindo paths como /docs/...)
-    pattern = r'(?<![a-zA-Z0-9/])/([a-zA-Z][a-zA-Z0-9-]*)\b'
+    # Pattern para /comando (excluindo paths como /docs/... ou ./scripts/)
+    pattern = r'(?<![a-zA-Z0-9/.])/([a-zA-Z][a-zA-Z0-9-]*)\b'
     matches = re.findall(pattern, content)
-    return set(matches)
+    # Filtra paths comuns que nao sao comandos
+    excluded = {'scripts', 'docs', 'claude', 'context', 'productflow', 'usr', 'bin', 'bash'}
+    return {m for m in matches if m.lower() not in excluded}
 
 
 def validate_references(result):
@@ -251,6 +262,15 @@ def validate_references(result):
                     result.add_warning(f"{file_path}: Referencia a /{ref} (renomeado para /pf-{ref})")
                 else:
                     result.add_warning(f"{file_path}: Referencia a comando inexistente /{ref}")
+
+
+def validate_version(result):
+    """Verifica se a versao esta consistente."""
+    pf_init = Path('.claude/commands/pf-init.md')
+    if pf_init.exists():
+        content = pf_init.read_text(encoding='utf-8')
+        if 'v3.1' not in content:
+            result.add_warning("pf-init.md: Versao nao esta atualizada para v3.1")
 
 
 def validate_structure(result):
@@ -302,6 +322,9 @@ def main():
 
     print("[4/4] Validando estrutura...")
     validate_structure(result)
+
+    print("[5/5] Validando versao...")
+    validate_version(result)
 
     result.print_results()
 
