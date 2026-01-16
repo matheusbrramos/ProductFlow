@@ -120,6 +120,13 @@ Atalhos para acoes comuns. Cada comando usa $ARGUMENTS para receber entrada do u
 
 > **Nota**: Os comandos `/pf-review`, `/pf-status` e `/pf-init` usam prefixo `pf-` para evitar conflito com comandos built-in do Claude Code.
 
+### Responsabilidade de Escrita
+
+- **Slash commands** sao responsaveis por criar e atualizar arquivos no disco.
+- **Subagents** geram conteudo e recomendacoes; o comando associado realiza a escrita.
+
+Agentes com `disallowedTools: [Write, Edit]` (researcher, discovery, supervisor) entregam conteudo formatado, mas nao escrevem diretamente. O slash command correspondente (`/research`, `/discovery`, `/pf-review`) e quem persiste o arquivo.
+
 ---
 
 ## Contrato de Arquivos
@@ -212,6 +219,18 @@ O validador verifica:
 - Campos obrigatorios (description para commands, name e description para agents)
 - Conflitos com comandos built-in do Claude Code
 - Referencias a comandos inexistentes nos briefings
+
+---
+
+## Como Gerar Release Zip Limpo
+
+Para gerar um zip de distribuicao sem arquivos de workspace:
+
+```bash
+./scripts/release.sh 3.1
+```
+
+O script usa `git archive` para criar um zip contendo apenas arquivos rastreados pelo git, excluindo `.git/`, `tmpclaude-*`, `.productflow/` e outros artefatos locais.
 
 ---
 
