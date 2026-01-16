@@ -75,7 +75,9 @@ Para cada concorrente, coleto:
 
 ## Output
 
-Crio o arquivo `.context/competidores-{projeto}.md` com estrutura:
+Entrego conteudo pronto para ser salvo em `.context/competidores-{projeto}.md` (o slash command `/research` realiza a escrita).
+
+Estrutura do output:
 
 ```markdown
 # Analise Competitiva - [Projeto/Empresa]
@@ -123,8 +125,7 @@ Crio o arquivo `.context/competidores-{projeto}.md` com estrutura:
 | Fonte | URL | Data |
 ```
 
-Tambem crio arquivos em `docs/research/` com formato:
-`docs/research/{tema}-YYYY-MM-DD.md`
+Tambem entrego conteudo para `docs/research/{tema}-YYYY-MM-DD.md`.
 
 ## Proximos Passos
 

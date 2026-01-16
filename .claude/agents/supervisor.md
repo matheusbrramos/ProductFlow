@@ -60,8 +60,7 @@ Nao apenas aponto problemas, mas sugiro solucoes especificas.
 
 ## Output
 
-Crio arquivos em `docs/reviews/` com formato:
-`docs/reviews/{feature}-review.md`
+Entrego conteudo pronto para ser salvo em `docs/reviews/{feature}-review.md` (o slash command `/pf-review` realiza a escrita).
 
 ### Estrutura de Revisao
 

@@ -72,8 +72,7 @@ PARA QUE [resultado esperado]
 
 ## Output
 
-Crio arquivos em `docs/discovery/` com formato:
-`docs/discovery/{tema}-YYYY-MM-DD.md`
+Entrego conteudo pronto para ser salvo em `docs/discovery/{tema}-YYYY-MM-DD.md` (o slash command `/discovery` realiza a escrita).
 
 ### Analise de Entrevistas
 
