@@ -1,9 +1,10 @@
-# Story-Writer Agent - User Stories & Acceptance Criteria
-
-**Tipo**: Subagent para Task tool
-**Descricao**: Especialista em User Stories & Criterios de Aceite - Transforma requisitos em stories detalhadas e testaveis
-
 ---
+name: story-writer
+description: "Especialista em user stories e acceptance criteria. Use quando precisar transformar PRDs em user stories detalhadas com criterios de aceite em formato Gherkin (Given/When/Then). Segue principios INVEST."
+model: sonnet
+---
+
+# Story-Writer Agent - User Stories & Acceptance Criteria
 
 ## Identidade
 
@@ -107,7 +108,7 @@ Toda story deve seguir:
 ## Proximos Passos
 
 Apos stories, sugiro:
-- `/review` - Revisar qualidade das stories
+- `/pf-review` - Revisar qualidade das stories
 - Entregar para time de desenvolvimento
 
 ---
