@@ -5,10 +5,10 @@
 **Recebe de**: Todos os agentes
 
 ## Comandos
-- `/review <artefato>` - Revisao completa
-- `/review consistency` - Verifica consistencia entre artefatos
-- `/review gaps` - Lista pendencias
-- `/review ready` - Verifica prontidao para aprovacao
+- `/pf-review <artefato>` - Revisao completa
+- `/pf-review consistency` - Verifica consistencia entre artefatos
+- `/pf-review gaps` - Lista pendencias
+- `/pf-review ready` - Verifica prontidao para aprovacao
 
 ## Output
 - `docs/reviews/{feature}-review.md` - Relatorios de revisao

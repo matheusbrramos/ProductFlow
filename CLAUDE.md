@@ -73,19 +73,23 @@ Agentes especializados para tarefas complexas:
 | `/research` | Pesquisa de mercado | `docs/research/{tema}-YYYY-MM-DD.md` |
 | `/discovery` | Analise de usuarios | `docs/discovery/{tema}-YYYY-MM-DD.md` |
 | `/prd` | Criar PRD | `docs/prd/{feature}.md` |
+| `/pf-spec` | Criar SDD | `docs/sdd/{feature}.md` |
 | `/stories` | User stories | `docs/stories/{feature}.md` |
 | `/sales` | Materiais de vendas | `docs/sales/` |
-| `/review` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
-| `/status` | Status do projeto | (terminal) |
+| `/pf-review` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
+| `/pf-status` | Status do projeto | (terminal) |
+| `/pf-init` | Ajuda rapida | (terminal) |
+
+> **Nota**: Os comandos `/pf-review`, `/pf-status` e `/pf-init` usam prefixo `pf-` para evitar conflito com comandos built-in do Claude Code.
 
 ---
 
 ## Fluxo de Trabalho Tipico
 
 ```
-/setup -> /research -> /discovery -> /prd -> /stories -> /sales
-                                                            |
-                                                      /review
+/setup -> /research -> /discovery -> /prd -> /pf-spec -> /stories -> /sales
+                                                                        |
+                                                                  /pf-review
 ```
 
 ---
@@ -106,6 +110,7 @@ Agentes especializados para tarefas complexas:
 | Research | `docs/research/` | `{tema}-YYYY-MM-DD.md` |
 | Discovery | `docs/discovery/` | `{tema}-YYYY-MM-DD.md` |
 | PRD | `docs/prd/` | `{feature}.md` |
+| SDD | `docs/sdd/` | `{feature}.md` |
 | Stories | `docs/stories/` | `{feature}.md` |
 | Sales | `docs/sales/` | diversos |
 | Reviews | `docs/reviews/` | `{feature}-review.md` |
@@ -118,6 +123,41 @@ Agentes especializados para tarefas complexas:
 |-----------|-----|
 | `snapshots/` | Estados salvos do projeto |
 | `memory/` | Contexto acumulado entre sessoes |
+
+---
+
+## Definition of Done (DoD)
+
+### PRD Aprovado
+- [ ] Todas as secoes obrigatorias preenchidas
+- [ ] Requisitos funcionais priorizados (MoSCoW)
+- [ ] Requisitos nao-funcionais especificados
+- [ ] Nenhum [NEEDS CLARIFICATION] pendente
+- [ ] Evidencias de discovery linkadas
+- [ ] Revisado por /pf-review
+
+### SDD Aprovado
+- [ ] Arquitetura documentada com diagramas
+- [ ] Componentes e responsabilidades definidos
+- [ ] Contratos de API especificados
+- [ ] Riscos tecnicos identificados e mitigados
+- [ ] Plano de rollout definido
+- [ ] Referencia ao PRD mantida
+
+### Stories Prontas
+- [ ] Formato Como/Quero/Para
+- [ ] Acceptance Criteria em Gherkin
+- [ ] Edge cases cobertos
+- [ ] Rastreabilidade ao PRD/SDD
+- [ ] Estimativa de complexidade (XS-XL)
+- [ ] Definition of Done por story
+
+### Material de Sales Aprovado
+- [ ] Versionado (vMajor.Minor)
+- [ ] Nenhum [PLACEHOLDER] pendente
+- [ ] Dados verificados com fonte
+- [ ] Confidencialidade marcada
+- [ ] Objetivo mensuravel definido
 
 ---
 
@@ -171,14 +211,20 @@ Agentes especializados para tarefas complexas:
 # 4. Criar PRD
 /prd "Nome da Feature"
 
-# 5. Detalhar stories
+# 5. Criar SDD (opcional)
+/pf-spec "Nome da Feature"
+
+# 6. Detalhar stories
 /stories "Nome da Feature"
 
-# 6. Materiais de vendas
+# 7. Materiais de vendas
 /sales
 
-# 7. Revisar qualidade
-/review ready
+# 8. Revisar qualidade
+/pf-review ready
+
+# 9. Verificar status
+/pf-status
 ```
 
 ---
@@ -192,4 +238,4 @@ Agentes especializados para tarefas complexas:
 
 ---
 
-*ProductFlow v3.0 - Seu parceiro senior para Product Management*
+*ProductFlow v3.1 - Seu parceiro senior para Product Management*

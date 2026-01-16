@@ -18,7 +18,7 @@ cp .productflow-temp/CLAUDE.md CLAUDE.md
 rm -rf .productflow-temp
 
 # Crie as pastas de contexto
-mkdir -p .context docs/discovery docs/research docs/prd docs/stories docs/sales docs/reviews docs/briefings docs/templates .productflow/snapshots .productflow/memory
+mkdir -p .context docs/discovery docs/research docs/prd docs/sdd docs/stories docs/sales docs/reviews docs/briefings docs/templates .productflow/snapshots .productflow/memory
 ```
 
 ### Opcao 2: Script de instalacao (Windows PowerShell)
@@ -57,10 +57,12 @@ seu-projeto/
 │       ├── research.md          # /research
 │       ├── discovery.md         # /discovery
 │       ├── prd.md               # /prd
+│       ├── pf-spec.md           # /pf-spec (SDD)
 │       ├── stories.md           # /stories
 │       ├── sales.md             # /sales
-│       ├── review.md            # /review
-│       └── status.md            # /status
+│       ├── pf-review.md         # /pf-review
+│       ├── pf-status.md         # /pf-status
+│       └── pf-init.md           # /pf-init
 ├── .context/                    # Contexto do projeto
 │   ├── empresa.md               # Criado por /setup
 │   └── competidores-{projeto}.md # Criado por /research
@@ -70,6 +72,7 @@ seu-projeto/
 │   ├── research/                # docs/research/{tema}-YYYY-MM-DD.md
 │   ├── discovery/               # docs/discovery/{tema}-YYYY-MM-DD.md
 │   ├── prd/                     # docs/prd/{feature}.md
+│   ├── sdd/                     # docs/sdd/{feature}.md
 │   ├── stories/                 # docs/stories/{feature}.md
 │   ├── sales/                   # Materiais de vendas
 │   └── reviews/                 # docs/reviews/{feature}-review.md
@@ -108,10 +111,14 @@ Atalhos para acoes comuns. Cada comando usa $ARGUMENTS para receber entrada do u
 | `/research <tema>` | Pesquisa de mercado/concorrentes | `docs/research/{tema}-YYYY-MM-DD.md` |
 | `/discovery <acao>` | Analise de usuarios | `docs/discovery/{tema}-YYYY-MM-DD.md` |
 | `/prd <feature>` | Cria PRD completo | `docs/prd/{feature}.md` |
+| `/pf-spec <feature>` | Cria SDD (Software Design Document) | `docs/sdd/{feature}.md` |
 | `/stories <feature>` | Detalha user stories | `docs/stories/{feature}.md` |
 | `/sales` | Materiais de vendas | `docs/sales/` |
-| `/review <artefato>` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
-| `/status` | Status do projeto | (exibe no terminal) |
+| `/pf-review <artefato>` | Revisao de qualidade | `docs/reviews/{feature}-review.md` |
+| `/pf-status` | Status do projeto | (exibe no terminal) |
+| `/pf-init` | Visao geral e ajuda rapida | (exibe no terminal) |
+
+> **Nota**: Os comandos `/pf-review`, `/pf-status` e `/pf-init` usam prefixo `pf-` para evitar conflito com comandos built-in do Claude Code.
 
 ---
 
@@ -137,6 +144,7 @@ Todos os artefatos seguem o padrao de nomenclatura:
 docs/research/{tema}-YYYY-MM-DD.md
 docs/discovery/{tema}-YYYY-MM-DD.md
 docs/prd/{feature}.md
+docs/sdd/{feature}.md
 docs/stories/{feature}.md
 docs/reviews/{feature}-review.md
 ```
@@ -153,11 +161,13 @@ docs/reviews/{feature}-review.md
         |
 3. /prd "Nome da Feature"           # Especificacao completa
         |
-4. /stories "Nome da Feature"       # User stories detalhadas
+4. /pf-spec "Nome da Feature"       # Design tecnico (SDD)
         |
-5. /sales                           # Materiais de vendas
+5. /stories "Nome da Feature"       # User stories detalhadas
         |
-6. /review ready                    # Validacao final
+6. /sales                           # Materiais de vendas
+        |
+7. /pf-review ready                 # Validacao final
 ```
 
 ---
@@ -174,12 +184,34 @@ docs/reviews/{feature}-review.md
 # 3. Criar PRD
 /prd "Alertas inteligentes de vendas"
 
-# 4. Detalhar stories
+# 4. Criar SDD (opcional)
+/pf-spec "Alertas inteligentes de vendas"
+
+# 5. Detalhar stories
 /stories "Alertas inteligentes de vendas"
 
-# 5. Revisar
-/review docs/prd/alertas-inteligentes-de-vendas.md
+# 6. Verificar status
+/pf-status
+
+# 7. Revisar
+/pf-review docs/prd/alertas-inteligentes-de-vendas.md
 ```
+
+---
+
+## Como Validar a Instalacao
+
+Apos instalar, rode o validador para garantir que tudo esta correto:
+
+```bash
+python scripts/validate_productflow.py
+```
+
+O validador verifica:
+- YAML frontmatter de todos os commands e agents
+- Campos obrigatorios (description para commands, name e description para agents)
+- Conflitos com comandos built-in do Claude Code
+- Referencias a comandos inexistentes nos briefings
 
 ---
 
@@ -197,6 +229,7 @@ docs/reviews/{feature}-review.md
 
 - [Claude Code](https://claude.ai/code) instalado
 - Acesso a internet (para pesquisas dos agentes)
+- Python 3.x (opcional, para validacao)
 
 ---
 
@@ -217,4 +250,4 @@ MIT License - veja [LICENSE](LICENSE) para detalhes.
 
 ---
 
-**ProductFlow v3.0** - Seu parceiro senior para Product Management
+**ProductFlow v3.1** - Seu parceiro senior para Product Management
