@@ -1,5 +1,6 @@
 # Contexto específico do projeto (cada usuário cria o seu)
 .context/
+!.context/.gitkeep
 
 # Documentos gerados (específicos de cada projeto)
 docs/discovery/
