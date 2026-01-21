@@ -1,21 +1,32 @@
 #!/usr/bin/env python3
 """
-ProductFlow Validator
-Valida a estrutura e configuracao do ProductFlow para garantir consistencia.
+ProductFlow Doctor / Validator v3.2
+Valida a estrutura, seguranca e consistencia do ProductFlow.
 
 Uso:
-    python scripts/validate_productflow.py
+    python scripts/validate_productflow.py [check]
+
+Checks disponiveis:
+    estrutura - Valida diretorios essenciais
+    agentes   - Valida consistencia dos agentes
+    comandos  - Valida consistencia dos comandos
+    seguranca - Valida configuracoes de seguranca
+    lixo      - Procura artefatos suspeitos
+    all       - Executa todas as validacoes (default)
 
 Verifica:
     - YAML frontmatter de todos commands e agents
     - Campos obrigatorios (description para commands, name e description para agents)
     - Conflitos com comandos built-in do Claude Code
     - Referencias a comandos inexistentes nos briefings/README
+    - Seguranca (settings.local.json, .gitignore)
+    - Artefatos de lixo (tmpclaude-*, nul, etc)
 """
 
 import os
 import re
 import sys
+import subprocess
 from pathlib import Path
 
 # Comandos built-in do Claude Code que devem ser evitados
@@ -269,8 +280,76 @@ def validate_version(result):
     pf_init = Path('.claude/commands/pf-init.md')
     if pf_init.exists():
         content = pf_init.read_text(encoding='utf-8')
-        if 'v3.1' not in content:
-            result.add_warning("pf-init.md: Versao nao esta atualizada para v3.1")
+        if 'v3.2' not in content:
+            result.add_warning("pf-init.md: Versao nao esta atualizada para v3.2")
+
+
+def validate_security(result):
+    """Valida configuracoes de seguranca."""
+    # Verifica se settings.local.json esta no .gitignore
+    gitignore = Path('.gitignore')
+    if gitignore.exists():
+        content = gitignore.read_text(encoding='utf-8')
+        if 'settings.local.json' not in content:
+            result.add_error(".gitignore: settings.local.json nao esta listado")
+        else:
+            result.add_info("settings.local.json esta no .gitignore")
+
+        if '.quarantine' not in content:
+            result.add_warning(".gitignore: .quarantine/ nao esta listado")
+    else:
+        result.add_error(".gitignore nao encontrado")
+
+    # Verifica se settings.local.json esta versionado (usando git)
+    try:
+        output = subprocess.run(
+            ['git', 'ls-files', '--cached'],
+            capture_output=True, text=True, timeout=5
+        )
+        if 'settings.local.json' in output.stdout:
+            result.add_error("settings.local.json esta versionado! Use: git rm --cached .claude/settings.local.json")
+        else:
+            result.add_info("settings.local.json NAO esta versionado (OK)")
+    except Exception:
+        result.add_warning("Nao foi possivel verificar git ls-files")
+
+    # Verifica se settings.example.json existe
+    if not Path('.claude/settings.example.json').exists():
+        result.add_warning("settings.example.json nao encontrado (recomendado criar template)")
+
+
+def validate_trash(result):
+    """Procura artefatos de lixo."""
+    trash_patterns = [
+        ('tmpclaude-*', 'Diretorios temporarios do Claude Code'),
+        ('nul', 'Artefato de sistema Windows'),
+        ('NUL', 'Artefato de sistema Windows'),
+        ('__pycache__', 'Cache Python'),
+        ('.DS_Store', 'Arquivo de sistema macOS'),
+        ('Thumbs.db', 'Arquivo de sistema Windows'),
+    ]
+
+    found_trash = []
+
+    # Procura no diretorio atual e subpastas
+    for pattern, desc in trash_patterns:
+        if '*' in pattern:
+            matches = list(Path('.').glob(f'**/{pattern}'))
+        else:
+            matches = list(Path('.').glob(f'**/{pattern}'))
+
+        for match in matches:
+            # Ignora .quarantine e .git
+            match_str = str(match)
+            if '.quarantine' in match_str or '.git' in match_str:
+                continue
+            found_trash.append((match_str, desc))
+
+    if found_trash:
+        for path, desc in found_trash:
+            result.add_warning(f"Lixo encontrado: {path} ({desc})")
+    else:
+        result.add_info("Nenhum artefato de lixo encontrado")
 
 
 def validate_structure(result):
@@ -300,8 +379,19 @@ def validate_structure(result):
 def main():
     """Funcao principal."""
     print("\n" + "="*60)
-    print("  VALIDADOR PRODUCTFLOW v3.1")
+    print("  PRODUCTFLOW DOCTOR v3.2")
     print("="*60)
+
+    # Parse argumentos
+    check = 'all'
+    if len(sys.argv) > 1:
+        check = sys.argv[1].lower()
+
+    valid_checks = ['estrutura', 'agentes', 'comandos', 'seguranca', 'lixo', 'all']
+    if check not in valid_checks:
+        print(f"\nCheck invalido: {check}")
+        print(f"Checks disponiveis: {', '.join(valid_checks)}")
+        sys.exit(1)
 
     result = ValidationResult()
 
@@ -311,20 +401,25 @@ def main():
         print("       (onde existe a pasta .claude/)")
         sys.exit(1)
 
-    print("\n[1/4] Validando comandos...")
-    validate_commands(result)
+    steps = []
+    if check in ['all', 'comandos']:
+        steps.append(("Validando comandos...", validate_commands))
+    if check in ['all', 'agentes']:
+        steps.append(("Validando agentes...", validate_agents))
+    if check in ['all']:
+        steps.append(("Validando referencias...", validate_references))
+    if check in ['all', 'estrutura']:
+        steps.append(("Validando estrutura...", validate_structure))
+    if check in ['all']:
+        steps.append(("Validando versao...", validate_version))
+    if check in ['all', 'seguranca']:
+        steps.append(("Validando seguranca...", validate_security))
+    if check in ['all', 'lixo']:
+        steps.append(("Procurando lixo...", validate_trash))
 
-    print("[2/4] Validando agentes...")
-    validate_agents(result)
-
-    print("[3/4] Validando referencias...")
-    validate_references(result)
-
-    print("[4/4] Validando estrutura...")
-    validate_structure(result)
-
-    print("[5/5] Validando versao...")
-    validate_version(result)
+    for i, (msg, func) in enumerate(steps, 1):
+        print(f"\n[{i}/{len(steps)}] {msg}")
+        func(result)
 
     result.print_results()
 

@@ -1,43 +1,126 @@
-# Contexto específico do projeto (cada usuário cria o seu)
+# =============================================================================
+# ProductFlow .gitignore
+# Atualizado: 2026-01-20 | Versão: 3.2
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# CONFIGURAÇÕES SENSÍVEIS DO CLAUDE CODE
+# CRÍTICO: Nunca versionar arquivos de settings locais
+# -----------------------------------------------------------------------------
+.claude/settings.local.json
+**/.claude/settings.local.json
+**/ProductFlow/.claude/settings.local.json
+
+# -----------------------------------------------------------------------------
+# QUARENTENA (artefatos movidos para análise/limpeza)
+# -----------------------------------------------------------------------------
+.quarantine/
+
+# -----------------------------------------------------------------------------
+# CONTEXTO DO PROJETO (cada usuário cria o seu)
+# -----------------------------------------------------------------------------
 .context/
 !.context/.gitkeep
 
-# Documentos gerados (específicos de cada projeto)
+# -----------------------------------------------------------------------------
+# DOCUMENTOS GERADOS (específicos de cada projeto do usuário)
+# -----------------------------------------------------------------------------
 docs/discovery/
+!docs/discovery/.gitkeep
 docs/research/
+!docs/research/.gitkeep
 docs/prd/
+!docs/prd/.gitkeep
+docs/sdd/
+!docs/sdd/.gitkeep
 docs/stories/
+!docs/stories/.gitkeep
 docs/sales/apresentacao-*/
 docs/reviews/*
+!docs/reviews/.gitkeep
 !docs/reviews/repo-fixes-*.md
 
-# Manter no repo (templates e briefings)
+# Manter no repo (templates e briefings são parte do framework)
 !docs/briefings/
 !docs/templates/
 
-# Snapshots e memória local
+# -----------------------------------------------------------------------------
+# RUNTIME DO PRODUCTFLOW
+# -----------------------------------------------------------------------------
 .productflow/
+!.productflow/.gitkeep
 
-# Arquivos de sistema
+# -----------------------------------------------------------------------------
+# ARTEFATOS TEMPORÁRIOS DO CLAUDE CODE
+# -----------------------------------------------------------------------------
+tmpclaude-*
+**/tmpclaude-*
+
+# -----------------------------------------------------------------------------
+# ARTEFATOS DE SISTEMA (Windows/Unix)
+# -----------------------------------------------------------------------------
 .DS_Store
 Thumbs.db
+Desktop.ini
+nul
+NUL
+*.lnk
 
-# Arquivos temporários
+# -----------------------------------------------------------------------------
+# ARQUIVOS TEMPORÁRIOS E LOGS
+# -----------------------------------------------------------------------------
 *.tmp
 *.temp
 *.log
-tmpclaude-*
+*.bak
+*~
+\#*\#
 
-# IDE
+# -----------------------------------------------------------------------------
+# IDE E EDITORES
+# -----------------------------------------------------------------------------
 .idea/
 .vscode/
 *.swp
 *.swo
+*.sublime-workspace
+*.sublime-project
 
-# Node (se usado)
+# -----------------------------------------------------------------------------
+# NODE.JS (se usado)
+# -----------------------------------------------------------------------------
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
 
-# Python (se usado)
+# -----------------------------------------------------------------------------
+# PYTHON (se usado)
+# -----------------------------------------------------------------------------
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
 .env
+.venv/
+venv/
+ENV/
+env/
+.eggs/
+*.egg-info/
+dist/
+build/
+
+# -----------------------------------------------------------------------------
+# SEGURANÇA - Nunca versionar credenciais
+# -----------------------------------------------------------------------------
+*.pem
+*.key
+*.crt
+.env.local
+.env.*.local
+secrets.json
+credentials.json

@@ -1,0 +1,44 @@
+{
+  "_comment": [
+    "ProductFlow - Template de Configuração Local do Claude Code",
+    "============================================================",
+    "INSTRUÇÕES:",
+    "1. Copie este arquivo para: .claude/settings.local.json",
+    "2. Ajuste as permissões conforme necessário",
+    "3. NUNCA commite o settings.local.json (está no .gitignore)",
+    "",
+    "SEGURANÇA:",
+    "- Este arquivo define quais comandos o Claude Code pode executar",
+    "- Use allowlist mínima (least privilege)",
+    "- Revise periodicamente as permissões"
+  ],
+  "permissions": {
+    "allow": [
+      "Skill(INIT)"
+    ],
+    "deny": []
+  },
+  "_examples": {
+    "_comment": "Exemplos de permissões adicionais (descomente conforme necessário)",
+    "git_basico": [
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "git_commit": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "git_push": [
+      "Bash(git push:*)"
+    ],
+    "python": [
+      "Bash(python:*)",
+      "Bash(pip install:*)"
+    ],
+    "node": [
+      "Bash(npm:*)",
+      "Bash(node:*)"
+    ]
+  }
+}

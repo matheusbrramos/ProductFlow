@@ -101,4 +101,4 @@ Sistema de **7 subagents especializados** para Product Management.
 - Briefings: `docs/briefings/{agente}.brief.md`
 
 ---
-*ProductFlow v3.1*
+*ProductFlow v3.2*
