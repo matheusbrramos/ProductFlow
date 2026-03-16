@@ -1,0 +1,21 @@
+{
+  "project_name": "Play Rating Recovery Agent",
+  "updated_at": "2026-03-03",
+  "status": "in_progress",
+  "owner": "Matheus Ramos",
+  "repo": "App Google Reports",
+  "current_focus": "context_setup",
+  "context_files": {
+    "empresa": ".context/empresa.md",
+    "projeto": ".context/projeto.md"
+  },
+  "assumptions": [
+    "Play Console access exists for package br.com.quero2ingressos",
+    "GCP project 217558870344 is the target project"
+  ],
+  "needs_clarification": [
+    "Storage decision for MVP: BigQuery vs DuckDB",
+    "Final stakeholders list (mobile engineering, support, executive owner)"
+  ]
+}
+

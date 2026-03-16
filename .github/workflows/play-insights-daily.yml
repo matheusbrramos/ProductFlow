@@ -1,0 +1,45 @@
+name: Play Insights Daily
+
+on:
+  schedule:
+    - cron: "15 10 * * *"
+  workflow_dispatch:
+
+jobs:
+  daily-pipeline:
+    runs-on: ubuntu-latest
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      BQ_DATASET: ${{ secrets.BQ_DATASET }}
+      PLAY_PACKAGE_NAME: ${{ secrets.PLAY_PACKAGE_NAME }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/gcp-creds.json
+      REPLY_PUBLISH_ENABLED: "false"
+      LOG_LEVEL: "INFO"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Write GCP credentials
+        run: |
+          echo '${{ secrets.GCP_SERVICE_ACCOUNT_JSON }}' > "${GOOGLE_APPLICATION_CREDENTIALS}"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Ingest
+        run: python -m play_insights ingest --days 7
+
+      - name: Analyze
+        run: python -m play_insights analyze --window 7d
+
+      - name: Daily report
+        run: python -m play_insights report --mode daily
+
+      - name: Reply dry-run
+        run: python -m play_insights reply --mode dry-run
+

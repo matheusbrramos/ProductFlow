@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+*.egg
+.env
+*.env
+
+# Virtual env
+venv/
+.env/
+.venv/
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+
+# Data/cache
+*.db
+*.sqlite
+*.sqlite3
+play_insights.duckdb
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+service-account.json
+service-account.json.json
+secrets/
+
+# Build
+dist/
+build/
+
+# mac
+*.DS_Store

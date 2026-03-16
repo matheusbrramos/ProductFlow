@@ -1,0 +1,36 @@
+name: Play Insights Weekly
+
+on:
+  schedule:
+    - cron: "30 11 * * 1"
+  workflow_dispatch:
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      BQ_DATASET: ${{ secrets.BQ_DATASET }}
+      PLAY_PACKAGE_NAME: ${{ secrets.PLAY_PACKAGE_NAME }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/gcp-creds.json
+      REPLY_PUBLISH_ENABLED: "false"
+      LOG_LEVEL: "INFO"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Write GCP credentials
+        run: |
+          echo '${{ secrets.GCP_SERVICE_ACCOUNT_JSON }}' > "${GOOGLE_APPLICATION_CREDENTIALS}"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Weekly report
+        run: python -m play_insights report --mode weekly
+

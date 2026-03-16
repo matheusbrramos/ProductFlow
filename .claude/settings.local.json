@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:q2.com.br)",
+      "WebSearch",
+      "WebFetch(domain:www.q2ingressos.com.br)",
+      "WebFetch(domain:q2ingressos.com.br)",
+      "WebFetch(domain:www.crunchbase.com)",
+      "Bash(python:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m pytest -m live_api -k auth -q)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m pytest -m live_api -q)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m pytest -m live_api -v)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m pytest tests/integration/test_reporting_live.py::test_query_crash_anr_live -v -s)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python3 -c \":*)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo python3 -c \":*)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m play_insights ingest --days 7)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m play_insights report --mode daily)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m play_insights report --mode weekly)",
+      "Bash(PLAY_PACKAGE_NAME=br.com.quero2ingressos GOOGLE_APPLICATION_CREDENTIALS=\"c:\\\\Users\\\\matheus.santos_q2ing\\\\Documents\\\\Q2\\\\App Google Reports\\\\service-account.json\" DB_PATH=play_insights.duckdb GCP_PROJECT_ID=217558870344 TIMEZONE=America/Sao_Paulo LOG_LEVEL=INFO REPLY_PUBLISH_ENABLED=false python -m play_insights reply --mode dry-run)",
+      "Bash(set -a)",
+      "Bash(PLAY_PACKAGE_NAME=\"br.com.quero2ingressos\" GOOGLE_APPLICATION_CREDENTIALS=\"/c/Users/matheus.santos_q2ing/Documents/Q2/App Google Reports/service-account.json\" DB_PATH=\"play_insights.duckdb\" GCP_PROJECT_ID=\"217558870344\" TIMEZONE=\"America/Sao_Paulo\" LOG_LEVEL=\"INFO\" REPLY_PUBLISH_ENABLED=\"false\" python -m play_insights ingest --days 30)",
+      "Bash(PLAY_PACKAGE_NAME=\"br.com.quero2ingressos\" GOOGLE_APPLICATION_CREDENTIALS=\"/c/Users/matheus.santos_q2ing/Documents/Q2/App Google Reports/service-account.json\" DB_PATH=\"play_insights.duckdb\" GCP_PROJECT_ID=\"217558870344\" TIMEZONE=\"America/Sao_Paulo\" LOG_LEVEL=\"INFO\" REPLY_PUBLISH_ENABLED=\"false\" python -m play_insights analyze --window 30d)",
+      "Bash(PLAY_PACKAGE_NAME=\"br.com.quero2ingressos\" GOOGLE_APPLICATION_CREDENTIALS=\"/c/Users/matheus.santos_q2ing/Documents/Q2/App Google Reports/service-account.json\" DB_PATH=\"play_insights.duckdb\" GCP_PROJECT_ID=\"217558870344\" TIMEZONE=\"America/Sao_Paulo\" LOG_LEVEL=\"INFO\" REPLY_PUBLISH_ENABLED=\"false\" python -m play_insights report --mode daily)",
+      "Bash(PLAY_PACKAGE_NAME=\"br.com.quero2ingressos\" GOOGLE_APPLICATION_CREDENTIALS=\"/c/Users/matheus.santos_q2ing/Documents/Q2/App Google Reports/service-account.json\" DB_PATH=\"play_insights.duckdb\" GCP_PROJECT_ID=\"217558870344\" TIMEZONE=\"America/Sao_Paulo\" LOG_LEVEL=\"INFO\" REPLY_PUBLISH_ENABLED=\"false\" python -m play_insights report --mode weekly)",
+      "Bash(bash -c ':*)",
+      "WebFetch(domain:developers.google.com)",
+      "Bash(cmd /c \"for /f \"\"tokens=1,* delims==\"\" %%a in \\(.env\\) do set %%a=%%b\")",
+      "Bash(set PLAY_PACKAGE_NAME=br.com.quero2ingressos)",
+      "Bash(set DB_PATH=play_insights.duckdb)",
+      "Bash(set GOOGLE_APPLICATION_CREDENTIALS=C:Usersmatheus.santos_q2ingDocumentsQ2App Google Reportsservice-account.json)",
+      "Read(//c/Users/matheus.santos_q2ing/.claude/projects/c--Users-matheus-santos-q2ing-Documents-Q2-App-Google-Reports/memory/**)",
+      "WebFetch(domain:clarity.microsoft.com)",
+      "Bash(find c:Usersmatheus.santos_q2ing -name *.duckdb -type f)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\matheus.santos_q2ing\\AppData\\Local"
+    ]
+  }
+}

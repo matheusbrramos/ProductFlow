@@ -1,0 +1,77 @@
+{
+  "date": "2026-03-05",
+  "generated_at": "2026-03-05T12:10:29.313954+00:00",
+  "health": {
+    "avg_rating": 1.0,
+    "total_reviews": 3,
+    "negative_count": 3,
+    "positive_count": 0
+  },
+  "top_categories": [
+    {
+      "complaint_category": "experiencia_compra",
+      "total": 3,
+      "avg_severity": 5.0
+    },
+    {
+      "complaint_category": "usabilidade",
+      "total": 3,
+      "avg_severity": 4.0
+    }
+  ],
+  "severity_distribution": [
+    {
+      "severity": 5,
+      "total": 3
+    },
+    {
+      "severity": 4,
+      "total": 3
+    }
+  ],
+  "intent_distribution": [
+    {
+      "intent": "frustration",
+      "total": 6
+    }
+  ],
+  "vitals_summary": [
+    {
+      "metric_set": "anrRateMetricSet",
+      "avg_value": 0.0,
+      "max_value": 0.0,
+      "days_with_data": 12
+    },
+    {
+      "metric_set": "crashRateMetricSet",
+      "avg_value": 0.260626,
+      "max_value": 1.0,
+      "days_with_data": 12
+    }
+  ],
+  "crash_avg": 0.260626,
+  "rating_avg": 1.0,
+  "negative_count": 3,
+  "top_recommendations": [
+    {
+      "date": "2026-03-04",
+      "recommendation_id": "experiencia_compra-2026-03-04",
+      "complaint_category": "experiencia_compra",
+      "evidence_refs": "neg_count=3;severity_avg=5.00;vitals_avg=0.1291;affected_users=0.0",
+      "expected_impact_score": 16.936,
+      "effort_tshirt": "M",
+      "owner_suggestion": "Product + Support",
+      "created_at": "2026-03-04 22:10:19.952814"
+    },
+    {
+      "date": "2026-03-04",
+      "recommendation_id": "usabilidade-2026-03-04",
+      "complaint_category": "usabilidade",
+      "evidence_refs": "neg_count=3;severity_avg=4.00;vitals_avg=0.1291;affected_users=0.0",
+      "expected_impact_score": 13.549,
+      "effort_tshirt": "S",
+      "owner_suggestion": "Product Design",
+      "created_at": "2026-03-04 22:10:19.952826"
+    }
+  ]
+}

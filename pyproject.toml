@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "play-insights"
+version = "0.1.0"
+description = "Google Play intelligence pipeline for rating recovery."
+readme = "README-DEV.md"
+requires-python = ">=3.11"
+dependencies = [
+    "duckdb>=1.0.0",
+    "google-api-python-client>=2.165.0",
+    "google-auth>=2.38.0",
+    "google-auth-httplib2>=0.2.0",
+    "python-dateutil>=2.9.0.post0",
+    "requests>=2.32.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.5",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.11.0",
+]
+stats = [
+    "google-cloud-bigquery>=3.31.0",
+    "google-cloud-bigquery-storage>=2.29.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "live_api: tests that call real Google APIs",
+    "warehouse: tests that use real BigQuery",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
