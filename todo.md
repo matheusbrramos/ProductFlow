@@ -255,16 +255,17 @@ colidindo no mesmo horário. Processos Python rodando em prioridade Normal compe
 
 ### Passo 6: Remover 13h e ajustar 09h→09:30 e 17h→17:30
 
-- [ ] Remover `Q2 Drive Publish - 13h00` via `Unregister-ScheduledTask -Confirm:$false`
-- [ ] Confirmar remoção: buscar a tarefa deve retornar erro
+- [x] Remover `Q2 Drive Publish - 13h00` via `Unregister-ScheduledTask -Confirm:$false`
+- [x] Confirmar remoção: buscar a tarefa deve retornar erro
 - [ ] Atualizar `Q2 Drive Publish - 09h00` para trigger `09:30`
 - [ ] Atualizar `Q2 Drive Publish - 17h00` para trigger `17:30`
-- [ ] Verificar mapa final — 4 tarefas ativas:
-  - [ ] PlayInsights-WeeklyReport: seg 06:30
+- [x] PlayInsights-WeeklyReport: **DESATIVADO** (27/03/2026) — agora é execução manual
+- [x] Verificar mapa final — 3 tarefas ativas (PlayInsights automatizado removido):
+  - [x] PlayInsights-DatabaseCleanup: seg 07:00 (cleanup automático mantido)
   - [ ] Q2-Proactive-Tasks-Daily-Refresh: diário 08:00 (não alterado)
   - [ ] Q2 Drive Publish - 09h00: diário 09:30
   - [ ] Q2 Drive Publish - 17h00: diário 17:30
-- [ ] `Q2 Drive Publish - 13h00` não existe mais
+- [x] `Q2 Drive Publish - 13h00` não existe mais
 
 ---
 

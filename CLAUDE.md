@@ -270,4 +270,25 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 
 ---
 
+## PLAY INSIGHTS — Status de Execução
+
+> **Atualizacao**: 27/03/2026 — Automacao **desativada**
+
+O relatorio semanal do Play Insights agora e **manual, sob demanda**:
+
+```bash
+# Executar relatorio semanal manualmente
+python scripts/send_weekly_report.py
+
+# Opcoes disponiveis
+python scripts/send_weekly_report.py --dry-run          # testa sem enviar
+python scripts/send_weekly_report.py --skip-ingest      # usa dados existentes
+```
+
+**Veja `README-MANUAL.md` para documentacao completa.**
+
+O cleanup do banco de dados continua automatico (segunda às 07:00).
+
+---
+
 *ProductFlow v3.1 - Seu parceiro senior para Product Management*
